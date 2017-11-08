@@ -1,0 +1,16 @@
+<div class="panel panel-warning form">
+    <div class="panel-heading" ng-bind="title"></div>
+    <div class="row">
+        <div class="col-lg-12" style="text-align: left;">
+            <span class="form-span" style="white-space: pre-wrap;" ng-bind="message"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="">
+            <button class="popup-button" style="width: auto;" ng-show="stacktrace" ng-click="onCopyStacktraceToClipboard()">复制详细错误信息到剪贴板</button>
+            <button class="popup-button" ng-hide="hideOkBtn" ng-click="onOkButtonClick()">确认</button>
+            <button class="popup-button right-btn" ng-hide="hideCancelBtn" ng-click="onCancelButtonClick()">取消</button>
+        </div>
+    </div>
+</div>

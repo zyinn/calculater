@@ -1,0 +1,201 @@
+﻿<span>{{item}}</span>
+
+<div class="row">
+    <span class="col-lg-2 col-md-3 bplaForm-label">期货合约</span>
+
+    <div class="col-lg-10 col-md-9 bplaForm-value">
+        <div class="custom-input-container">
+            <select custom-select0-directive style="width: 12rem;"
+                    ng-disabled="isViewBusy" ng-model="vm.selectedFutureContract" ng-change="onFutureContractChange()" ng-options="item.tfId for item in vm.futureContracts"></select>
+        </div>
+    </div>
+
+    <!-- ReSharper disable Html.TagNotResolved -->
+    <!--<ui-select class="col-lg-4" ng-model="selected.value">
+        <ui-select-match>
+            <span ng-bind="$select.selected.name"></span>
+        </ui-select-match>
+        <ui-select-choices repeat="item in (itemArray | filter: $select.search) track by item.id">
+            <span ng-bind="item.name"></span>
+        </ui-select-choices>
+    </ui-select>-->
+    <!-- ReSharper restore Html.TagNotResolved -->
+
+
+</div>
+<div class="row">
+    <span class="col-lg-2 col-md-3 bplaForm-label">期货价格</span>
+    <div class="col-lg-4 col-md-9" style="width: auto;">
+        <input type="text" style="width: 10rem;" ng-disabled="isViewBusy" ng-keydown="onPropForCalculateChange($event)" ng-model="vm.responseDto.futurePrice"/>
+        <span class="mif-loop2 mif-loop2-hover" style="width: Auto; line-height: 2rem;" ng-click="onClickRefreshFuturePrice()"></span>
+    </div>
+
+    <span class="col-lg-2 col-md-3 bplaForm-label">最后更新</span>
+    <span class="col-lg-4 col-md-9"
+          ng-class="{'text-color-red': isWarnDatetime(vm.responseDto.futureLastUpdateTime)}"
+          ng-bind="vm.responseDto.futureLastUpdateTime"></span>
+</div>
+
+<div class="row row-size-s">
+    <span class="col-lg-2 bplaForm-label">CTD</span>
+    <span class="col-lg-4 bplaForm-value" ng-bind="vm.responseDto.ctdBondCode"></span>
+</div>
+<div class="row">
+    <span class="col-lg-2 bplaForm-label">CTD全价</span>
+    <input class="col-lg-4" type="text" ng-disabled="isViewBusy" ng-keydown="onPropForCalculateChange($event)" ng-model="vm.responseDto.ctdFullPrice" />
+
+    <div class="col-lg-2 bplaForm-label">
+        <span class="mif-info" style="line-height: 2rem;" data-role="hint" data-hint="期货久期 = CTD修正久期"></span>
+        <span class="bplaForm-label" style="width: auto;">期货久期</span>
+    </div>
+
+    <span class="col-lg-4 bplaForm-value" ng-bind-template="{{vm.responseDto.ctdDuration}} Y"></span>
+</div>
+
+<div class="row row-spilt"></div>
+
+<div class="row">
+    <div class="col-lg-2 bplaForm-label">
+        <span ng-show="!vm.isYieldEditable" class="mif-info" data-role="hint" data-hint="当现券=CTD时，现券价格不能修改。" data-hint-position="top"></span>
+        <span class="bplaForm-label">现券</span>
+    </div>
+
+    <!--<input type="search" list="bondList" class="col-lg-4" ng-change="onBondCodeChange()" ng-disabled="isViewBusy" ng-model="vm.responseDto.bondCode"/>
+    <datalist id="bondList">
+        <option ng-repeat="item in vm.responseDto.bondList" label="{{item.bondKey}}" value="{{item.bondCode}}"/>
+    </datalist>-->
+
+    <!-- ng-class="{open: vm.responseDto.bondList.length > 0 && showBondCodeDropdown}" -->
+    <div id="bondCodeDropdown" class="dropdown col-lg-4" style="width: auto;">
+        <input id="dropdownMenu1" class="dropdown-toggle" type="search" style="width: 12rem;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+               ng-disabled="isViewBusy" ng-model="vm.responseDto.bondCode" 
+               ng-blur="onBondCodeBlur()" ng-change="onBondCodeChange()" ng-keydown="onBondCodeKeydown($event)" />
+
+        <!--<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Dropdown
+            <span class="caret"></span>
+        </button>-->
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" 
+            ng-click="onBondCodeDropdownSelected()" ng-mouseenter="onBondCodeDropdownMouseenter($event)" >
+            <li ng-repeat="item in vm.responseDto.bondList | filter: vm.responseDto.bondCode" label="{{item.bondKey}}" value="{{item.bondCode}}">
+                <span value="{{item.bondCode}}" ng-bind="item.bondCode"></span>
+                <span value="{{item.bondCode}}" ng-bind="item.shortName"></span>
+            </li>
+        </ul>
+    </div>
+
+    <span class="col-lg-2 bplaForm-label">修正久期</span>
+    <span class="col-lg-4 bplaForm-value" ng-bind-template="{{vm.responseDto.cdcDuration}} Y"></span>
+</div>
+
+<div class="row">
+    <span class="col-lg-2 bplaForm-label">收益率</span>
+    <div class="col-lg-4" style="width: auto;">
+        <input type="text" style="width: 10rem;" 
+               ng-class="{disabled: !vm.isYieldEditable}" ng-keydown="onPropForCalculateChange($event, 'yield')" ng-disabled="isViewBusy || !vm.isYieldEditable" ng-model="vm.responseDto.yield"/>
+        <span>%</span>
+    </div>
+
+    <span class="col-lg-2 bplaForm-label" ng-show="vm.responseDto.isCdcYieldLastUpdateTime === false">最后更新</span>
+    <span class="col-lg-4" type="text" ng-show="vm.responseDto.isCdcYieldLastUpdateTime === false" ng-bind="vm.responseDto.yieldLastUpdateTime"></span>
+</div>
+
+<div class="row" ng-show="vm.responseDto.isCdcYieldLastUpdateTime === true">
+    <span class="col-lg-2"></span>
+    <span class="col-lg-4 bplaForm-label" style="width: auto;">中债估值最后更新</span>
+    <span class="col-lg-4" type="text" ng-bind="vm.responseDto.yieldLastUpdateTime"></span>
+</div>
+
+<div class="row">
+    <span class="col-lg-2"></span>
+    <div class="col-lg-5 toolbox" style="width: Auto; margin-left: 0; padding: 0;" 
+         ng-class="{disabled: !vm.isYieldEditable}" ng-click="onActiveButton(undefined, 'yieldType')">
+        <button value="ofr" ng-disabled="isViewBusy || !vm.isYieldEditable" ng-class="{active: vm.yieldType === 'ofr'}" ng-bind="getEnumButtonName('bondMap', 'ofr')"></button>
+        <button value="bid" ng-disabled="isViewBusy || !vm.isYieldEditable" ng-class="{active: vm.yieldType === 'bid'}" ng-bind="getEnumButtonName('bondMap', 'bid')"></button>
+        <button value="deal" ng-disabled="isViewBusy || !vm.isYieldEditable" ng-class="{active: vm.yieldType === 'deal'}" ng-bind="getEnumButtonName('bondMap', 'deal')"></button>
+        <button value="cdc" ng-disabled="isViewBusy || !vm.isYieldEditable" ng-class="{active: vm.yieldType === 'cdc'}" ng-bind="getEnumButtonName('bondMap', 'cdc')"></button>
+    </div>
+</div>
+
+<div class="row">
+    <span class="col-lg-2 bplaForm-label">净价</span>
+    <input type="text" class="col-lg-5" 
+           ng-class="{disabled: !vm.isYieldEditable}" ng-disabled="isViewBusy || !vm.isYieldEditable" ng-keydown="onPropForCalculateChange($event, 'bondNetPrice')" ng-model="vm.responseDto.bondNetPrice" />
+</div>
+<div class="row">
+    <span class="col-lg-2 bplaForm-label">全价</span>
+    <input type="text" class="col-lg-4" 
+           ng-class="{disabled: !vm.isYieldEditable}" ng-disabled="isViewBusy || !vm.isYieldEditable" ng-keydown="onPropForCalculateChange($event, 'bondFullPrice')" ng-model="vm.responseDto.bondFullPrice" />
+
+    <div class="col-lg-2 bplaForm-label">
+        <span class="mif-info" data-role="hint" data-hint="可交割券的转换因子是中金所报的，非可交割券的转换因子是QB计算的。"></span>
+        <span class="bplaForm-label" style="width: auto;">转换因子</span>
+    </div>
+    <span class="col-lg-4 bplaForm-value" ng-bind="vm.responseDto.conversionFactor"></span>
+</div>
+
+<div class="row row-spilt"></div>
+
+<div class="row">
+    <div class="col-lg-2 bplaForm-label">
+        <span class="mif-info" data-role="hint" data-hint="默认当天" data-hint-position="top"></span>
+        <span class="bplaForm-label">开仓日</span>
+    </div>
+    <input class="col-lg-3" date-picker-directive ng-change="onPropForCalculateChange($event, 'openPositionDate')"
+           ng-disabled="isViewBusy" ng-keydown="onPropForCalculateChange($event)" date-format="yyyy-MM-dd" ng-model="vm.openPositionDate" />
+</div>
+<div class="row">
+    <div class="col-lg-2 bplaForm-label">
+        <span class="mif-info" data-role="hint" data-hint="默认期货最后交易日"></span>
+        <span class="bplaForm-label">平仓日</span>
+    </div>
+    <input class="col-lg-4" date-picker-directive ng-change="onPropForCalculateChange($event, 'closePositionDate')"
+           ng-disabled="isViewBusy" ng-keydown="onPropForCalculateChange($event)" date-format="yyyy-MM-dd" ng-model="vm.closePositionDate" />
+
+    <span class="col-lg-2 bplaForm-label">持有期</span>
+    <span class="col-lg-4 bplaForm-value" type="text" ng-bind-template="{{vm.responseDto.holdingPeriod}} 天"> </span>
+</div>
+<div class="row row-spilt"></div>
+<div class="row">
+    <span class="col-lg-2 bplaForm-label">资金成本</span>
+    <div class="col-lg-3 bplaForm-value" style="width: Auto;">
+        <div class="custom-input-container">
+            <select custom-select0-directive style="width: 10rem;"
+                    ng-model="vm.selectedRepoRateType" ng-disabled="isViewBusy" ng-options="item.code for item in vm.repoRateTypes | orderBy: 'code'" ng-change="onSelectedRepoRateTypeChange()">
+                <option value="">自定义</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-lg-7" style="width: auto;">
+
+        <!-- Show: has value -->
+        <span style="width: Auto; margin: 0 3px 0 6px;" ng-show="vm.selectedRepoRateType !== null && vm.selectedRepoRateType.code">+</span>
+        <input type="number" style="width: 7rem; text-align: right;"
+               ng-model="vm.selectedRepoRateType.bpValue" ng-disabled="isViewBusy" ng-show="vm.selectedRepoRateType !== null && vm.selectedRepoRateType.code" ng-change="onBpValueChange()" />
+        <span style="width: auto;" ng-show="vm.selectedRepoRateType !== null && vm.selectedRepoRateType.code">BP =</span>
+        <span class="bplaForm-value" style="width: Auto;"
+              ng-bind="vm.selectedRepoRateType.capitalCost" ng-show="vm.selectedRepoRateType !== null && vm.selectedRepoRateType.code"></span>
+
+        <!-- Show: 自定义 -->
+        <input type="number" style="width: auto; margin-left: 5px;"
+               ng-disabled="isViewBusy" ng-keydown="onPropForCalculateChange($event)" ng-model="vm.selectedRepoRateType.capitalCost" ng-show="vm.selectedRepoRateType === null || !vm.selectedRepoRateType.code" />
+
+
+        <span class="bplaForm-value" style="width: Auto;">%</span>
+    </div>
+
+
+</div>
+<div class="row row-size-s">
+    <span class="col-lg-2 bplaForm-label">IRR</span>
+    <span class="col-lg-5 bplaForm-value" ng-bind="vm.responseDto.irr"></span>
+</div>
+<div class="row row-size-s">
+    <span class="col-lg-2 bplaForm-label">基差</span>
+    <span class="col-lg-5 bplaForm-value" ng-bind="vm.responseDto.basis"></span>
+</div>
+<div class="row row-size-s">
+    <span class="col-lg-2 bplaForm-label">净基差</span>
+    <span class="col-lg-5 bplaForm-value" ng-bind="vm.responseDto.netBasis"></span>
+</div>

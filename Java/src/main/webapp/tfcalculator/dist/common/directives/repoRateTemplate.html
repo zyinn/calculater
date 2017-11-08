@@ -1,0 +1,22 @@
+<div>
+    <div class="custom-input-container">
+        <select custom-select0-directive style="width: 10rem;"
+                ng-model="selectedRepoRateType" ng-options="item.code for item in dataSource | orderBy: 'code'" ng-change="onChangeRepoRateType()">
+            <option value="">自定义</option>
+        </select>
+    </div>
+
+    <!-- Show: has value -->
+    <span style="width: auto; margin: 0 3px;" ng-show="isNotCustom">+</span>
+    <input type="number" style="width: 7rem; text-align: right;"
+           ng-model="bpValue" ng-show="isNotCustom" ng-change="onChangeBpValue()" ng-keydown="onKeydown($event)"/>
+    <span style="width: auto;" ng-show="isNotCustom">BP =</span>
+    <span style="width: auto;" ng-bind="capitalCost" ng-show="isNotCustom"></span>
+
+    <!-- Show: 自定义 -->
+    <input type="number" style="width: auto; margin-left: 5px;"
+           ng-keydown="onKeydown($event)" ng-change="onChangeBpValue()" ng-model="capitalCost" ng-show="!isNotCustom" />
+
+
+    <span style="width: auto;">%</span>
+</div>

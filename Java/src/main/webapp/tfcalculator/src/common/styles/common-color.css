@@ -1,0 +1,211 @@
+﻿body {
+    background: black;
+    color: white;
+}
+
+
+select,
+input[type=text],
+input[type=date],
+input[type=search],
+input[type=number],
+.select2-container .select2-choice {
+    background: #6B6E4A;
+    color: black;
+}
+
+button {
+    background: #0F898A;
+    color: white;
+}
+
+    button.button-dark {
+        background: #165456;
+        color: white;
+    }
+
+    button.active {
+        background: #FF900D;
+        color: black;
+    }
+
+.row-spilt {
+    border-bottom: 1px solid #2A3434;
+}
+
+.mif-loop2-hover:before {
+    margin-top: 13px;
+}
+
+.mif-loop2-hover:hover {
+    -webkit-animation: rotate-loop2 1s;
+    -moz-animation: rotate-loop2 1s;
+    -ms-animation: rotate-loop2 1s;
+    -o-animation: rotate-loop2 1s;
+    animation: rotate-loop2 1s;
+}
+
+/*nav {
+    background: #092424;
+}*/
+
+nav > a::before {
+    background: #0F898A;
+}
+
+nav > a.active::before {
+    background: #FF900D;
+}
+
+.tabControl {
+    border-bottom: 2px solid #FF900D;
+}
+
+.tabItem {
+    color: black;
+}
+
+.text-color-red {
+    color: red !important;
+}
+
+.text-color-green {
+    color: #70D649 !important;
+}
+
+@-moz-keyframes rotate-loop2 {
+    100% {
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+@-webkit-keyframes rotate-loop2 {
+    100% {
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes rotate-loop2 {
+    100% {
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+
+/******************************************************************************************************/
+/* ui.select */
+/******************************************************************************************************/
+
+/*.ui-select-container > .ui-select-match > .ui-select-toggle,
+.ui-select-container > .ui-select-choices-content {
+    background: #6B6E4A;
+}
+
+    .ui-select-container > .ui-select-match > .ui-select-toggle > .ui-select-match-text,
+    .ui-select-bootstrap .ui-select-choices-row > a ,
+    .ui-select-bootstrap .ui-select-choices-row.active > a {
+        color: black;
+    }
+
+.ui-select-bootstrap .ui-select-toggle > .caret {
+    background: #0F898A;
+}*/
+
+/******************************************************************************************************/
+/* ui.datepicker */
+/******************************************************************************************************/
+
+.hasDatepicker {
+    background: #6B6E4A;
+    color: black;
+}
+
+#ui-datepicker-div {
+    background: #0F898A;
+}
+
+.ui-datepicker .ui-datepicker-title {
+    color: black;
+}
+
+.ui-datepicker td span,
+.ui-datepicker td a {
+    color: black;
+}
+
+.ui-datepicker .ui-datepicker-prev-hover span,
+.ui-datepicker .ui-datepicker-next-hover span {
+    background: #FF900D;
+}
+
+.ui-datepicker td span:hover,
+.ui-datepicker td a:hover {
+    background: #FF900D;
+}
+
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+    background: white;
+}
+
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+    color: black;
+}
+
+/******************************************************************************************************/
+/* ui.tooltip */
+/******************************************************************************************************/
+
+.tooltip {
+    font-size: 12px;
+}
+
+    /* Specify styling for tooltip contents */
+    .tooltip .tooltip-inner {
+        color: black;
+        padding: 10px;
+        background-color: #fffcc0;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        -ms-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px #eee solid;
+        -ms-border-radius: 0;
+        border-radius: 0;
+    }
+
+    /* Hide arrow */
+    .tooltip .tooltip-arrow {
+        display: none;
+    }
+
+/******************************************************************************************************/
+/* searchBoxDirective */
+/******************************************************************************************************/
+
+.search-box-directive ul.dropdown-menu {
+    background: #6B6E4A;
+}
+
+    .search-box-directive ul.dropdown-menu > li {
+        color: black;
+    }
+
+        .search-box-directive ul.dropdown-menu > li.selected,
+        .search-box-directive ul.dropdown-menu > li.active,
+        .search-box-directive ul.dropdown-menu > li:focus,
+        .search-box-directive ul.dropdown-menu > li:hover {
+            background: #0F898A;
+        }

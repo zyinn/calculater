@@ -1,0 +1,135 @@
+<div class="row chart-header">
+    <div class="col-lg-4 col-md-6 toolbox toolbox-hedgeMap" ng-click="onActiveButton(undefined, 'selectedHedge')">
+        <button class="button-dark" value="LONG_BASIS" ng-class="{active: vm.selectedHedge === 'LONG_BASIS'}" ng-bind="getEnumButtonName('hedgeMap', 'LONG_BASIS')"></button>
+        <button class="button-dark" value="SHORT_BASIS" ng-class="{active: vm.selectedHedge === 'SHORT_BASIS'}" ng-bind="getEnumButtonName('hedgeMap', 'SHORT_BASIS')"></button>
+    </div>
+
+    <div class="col-lg-4 col-md-6" ng-show="vm.selectedHedge === 'SHORT_BASIS'">
+        <span class="bplaForm-label">冲击成本</span>
+        <input type="number" style="width: 8rem;" min="0" ng-keydown="onPropForCalculateChange($event, 'impactCost')" ng-disabled="isViewBusy" ng-model="vm.impactCost" />
+        <span>BP</span>
+    </div>
+</div>
+
+<div class="row chart-header">
+    <div class="col-lg-4 col-md-6 ">
+        <span class="bplaForm-label">现券名义本金</span>
+        <input type="text" class="input-bondNominalPrincipal" currency-value-directive ng-change="applyCurrencyFormat('vm.bondNominalPrincipal')"
+               ng-disabled="isViewBusy" ng-keydown="onPropForCalculateChange($event,'bondNominalPrincipal')" field="vm.bondNominalPrincipal" ng-model="vm.bondNominalPrincipal" min="0" />
+        <span>元</span>
+    </div>
+
+    <div class="col-lg-4 col-md-3 ">
+        <span class="bplaForm-label">期货手数</span>
+        <span class="" ng-bind="vm.responseDto.futureNumber"></span>
+        <span style="width: Auto;">手</span>
+    </div>
+
+    <div class="col-lg-4 col-md-3 toolbox" style="text-align: right;">
+        <button ng-disabled="isViewBusy" ng-click="resetViewModel()">恢复默认</button>
+    </div>
+</div>
+
+<div id="chart1" class="row chart1"></div>
+<div id="chart2" class="row chart2" ng-click="onClickChart()"></div>
+
+<div id="detail" class="row detail chart-detail-postition-{{detailPostition}}" ng-class="{show: isDetailShow}" ng-show="isDetailShow">
+    <div class="popup" ng-click="beginEditPopup()">
+        <button class="popup-close-btn" ng-click="onClickClosePopup()">X</button>
+        <div class="row">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>收益率</th>
+                        <th>IRR</th>
+                        <th>基差</th>
+                        <th>净基差</th>
+                        <th class="hasSymbol" ng-bind="vm.selectChartPoint.alterColumn1"></th>
+                        <th class="hasSymbol" ng-show="vm.selectChartPoint.alterColumn2" ng-bind="vm.selectChartPoint.alterColumn2"></th>
+                        <td style="width: 20px;"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>开仓</th>
+                        <td ng-bind-template="{{vm.selectChartPoint.opYield}}%"></td>
+                        <td ng-bind-template="{{vm.responseDto.irr}}%"></td>
+                        <td ng-bind="vm.responseDto.basis"></td>
+                        <td ng-bind="vm.responseDto.netBasis"></td>
+                        <td ng-bind-template="{{vm.selectChartPoint.opBondNetPrice}} 元"></td>
+                        <td ng-bind-template="{{vm.selectChartPoint.opFuturePrice}} 元"></td>
+                    </tr>
+                    <tr>
+                        <th>平仓</th>
+                        <td ng-bind-template="{{vm.selectChartPoint.yield}}%"></td>
+                        <td ng-bind-template="{{vm.selectChartPoint.irr}}%"></td>
+                        <td ng-bind="vm.selectChartPoint.basis"></td>
+                        <td ng-bind="vm.selectChartPoint.netBasis"></td>
+                        <td ng-bind-template="{{vm.selectChartPoint.bondPrice}} 元"></td>
+                        <!--<td editable="vm.selectChartPoint.futurePrice" ng-click="beginEditPopup()" style="width: 8rem; white-space: nowrap; ">
+                            <span editable="vm.selectChartPoint.futurePrice" style="border: 1px solid lightblue;"
+                                  ng-click="beginEditPopup()" ng-hide="isPopupEditing" ng-bind="vm.selectChartPoint.futurePrice"></span>
+                            <input editable type="text" style="width: 5rem; text-align: right; margin: 0; padding: 2px;"
+                                   ng-model="vm.selectChartPoint.futurePrice" ng-keydown="enterAndCommit($event)" ng-show="isPopupEditing" ng-blur="endEditPopup()"/>
+                            <span style="padding: 0; margin: 0;">元</span>
+                        </td>-->
+
+                        <td style="width: 10rem; white-space: nowrap; ">
+                            <input editable type="text" style="width: 7rem; text-align: right; margin: 0; padding: 2px;" ng-focus="beginEditPopup($event)"
+                                   ng-model="vm.selectChartPoint.futurePrice" ng-keydown="enterAndCommit($event)" ng-blur="endEditPopup($event)" />
+                            <span style="padding: 0; margin: 0;">元</span>
+                        </td>
+                        <td><span class="mif-loop2 mif-loop2-hover" ng-click="refreshFuturePrice()"></span></td>
+                        <td style="width: 1rem;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row row-spilt" style="border-top:1px solid #175657;"></div>
+        <div class="row">
+            <span class="col-lg-2 bplaForm-label">方向</span>
+            <span class="bplaForm-value col-lg-2"                  
+                  ng-bind="getEnumButtonName('hedgeMap', vm.selectedHedge)"></span>
+            <span class="col-lg-2 bplaForm-label" ng-show="vm.selectedHedge === 'SHORT_BASIS'">冲击成本</span>
+            <span class="col-lg-2 bplaForm-value" ng-show="vm.selectedHedge === 'SHORT_BASIS'" ng-bind-template="{{vm.selectChartPoint.impactCost}} BP"></span>
+            <span class="col-lg-4" ng-show="vm.selectedHedge === 'LONG_BASIS'"></span>
+            <span class="col-lg-2 bplaForm-label">每手盈亏</span>
+            <span class="col-lg-2 bplaForm-value"
+                  uib-tooltip="{{vm.selectChartPoint.eachProfitLoss | currency:''}} 元" tooltip-append-to-body="true" tooltip-animation="false" tooltip-placement="top-left"
+                  ng-class="{'text-color-red': +vm.selectChartPoint.totalProfitLoss > 0, 'text-color-green': +vm.selectChartPoint.totalProfitLoss < 0}"
+                  ng-bind="vm.selectChartPoint.eachProfitLoss | currencyUnitFilter"></span>
+        </div>
+        <div class="row">
+            <span class="col-lg-2 bplaForm-label">手数</span>
+            <span class="bplaForm-value col-lg-2"
+                  ng-bind-template="{{vm.responseDto.futureNumber}} 手"></span>
+            <span class="col-lg-2 bplaForm-label" ng-show="vm.selectedHedge === 'SHORT_BASIS'">
+                <span class="mif-info" data-role="hint" data-hint="每手"></span>
+                冲击成本额</span>
+            <span class="col-lg-2 bplaForm-value" ng-show="vm.selectedHedge === 'SHORT_BASIS'" ng-bind-template="{{vm.selectChartPoint.impactAmount | currency:''}} 元"></span>
+            <span class="col-lg-4" ng-show="vm.selectedHedge === 'LONG_BASIS'"></span>
+            <span class="col-lg-2 bplaForm-label">
+                <span class="mif-info" data-role="hint" data-hint="做空基差损益 = （开仓日基差 - 平仓日基差 - 持有期损益）* 手数 * 10000" ng-show="vm.selectedHedge === 'SHORT_BASIS'"></span>
+                <span class="mif-info" data-role="hint" data-hint="做多基差损益 = （平仓日基差 - 开仓日基差 + 持有期损益）* 手数 * 10000" ng-show="vm.selectedHedge === 'LONG_BASIS'"></span>
+                总盈亏</span>
+            <span class="col-lg-2 bplaForm-value"
+                  uib-tooltip="{{vm.selectChartPoint.totalProfitLoss | currency:''}} 元" tooltip-append-to-body="true" tooltip-animation="false" tooltip-placement="top-left"
+                  ng-class="{'text-color-red': +vm.selectChartPoint.totalProfitLoss > 0, 'text-color-green': +vm.selectChartPoint.totalProfitLoss < 0}"
+                  ng-bind="vm.selectChartPoint.totalProfitLoss | currencyUnitFilter"></span>
+        </div>
+        <div class="row">
+            <span class="col-lg-2 bplaForm-label">持有期</span>
+            <span class="bplaForm-value col-lg-2"
+                  ng-bind-template="{{vm.responseDto.holdingPeriod}} 天"></span>
+            <span class="col-lg-2 bplaForm-label" >
+                <span class="mif-info" data-role="hint" data-hint="每百元名义本金"></span>
+                持有期损益</span>
+            <span class="col-lg-2 bplaForm-value"  ng-bind-template="{{vm.responseDto.holdPnl}} 元"></span>
+            <span class="col-lg-2 bplaForm-label">年化收益率</span>
+            <span class="col-lg-2 bplaForm-value"
+                  ng-class="{'text-color-red': +vm.selectChartPoint.annualizedYield > 0, 'text-color-green': +vm.selectChartPoint.annualizedYield < 0}"
+                  ng-bind-template="{{vm.selectChartPoint.annualizedYield || 0}}%"></span>
+        </div>
+    </div>
+</div>

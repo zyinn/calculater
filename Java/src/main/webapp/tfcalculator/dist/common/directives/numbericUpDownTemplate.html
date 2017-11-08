@@ -1,0 +1,13 @@
+<div>
+    <input  style="padding-right: 2rem; width: 200px;" type="search"
+           ng-focus="onFocus()" ng-click="onClickInput($event)"
+           ng-disabled="isViewBusy" ng-model="filterString" ng-change="onChangeFilterString()" ng-keydown="onKeydown($event)" />
+    <span class="mif-search prepend-icon" ng-click="onClickDoSearchButton($event)"></span>
+
+    <button id="dropdownMenu{{idSeq}}-toggle-button" style="display: none;" class="dropdown-toggle" data-toggle="dropdown"></button>
+
+    <ul id="dropdownMenu{{idSeq}}-menu" class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="dropdownMenu{{idSeq}}"
+        ng-click="onClickDropdownItem($event)" ng-mouseenter="onMouseenterDropdown($event)">
+        <li ng-class="{selected: item.$id === selectedValue.$id }" ng-repeat="item in itemSource | filter: filterString" label="{{item.bondKey}}" value="{{item.bondCode}}">{{formatItem(item)}}</li>
+    </ul>
+</div>

@@ -1,0 +1,303 @@
+<div class="row" style="background: black;" ng-if="vm.selectedCalTgtType.value !== calTgtTypeButtons[3].value">
+    <nav class="cell size12 button-nav" ng-click="onActiveButton(undefined, 'vm.selectedBondType', true)">
+        <button ng-disabled="isViewBusy" ng-repeat="item in bondTypeButtons" ng-bind="item.display" value="{{item.value}}" ng-class="{active: vm.selectedBondType.value === item.value}"></button>
+    </nav>
+</div>
+
+<div class="row" ng-if="displayWhen([[0,0], [1,0], [2,0]])">
+    <span class="cell size1 form-label">债券代码</span>
+
+    <div class="cell size2 form-value" style="width: auto;">
+        <div class="custom-input-container">
+            <select custom-select0-directive style="width: 273px;" renderWidth="273" renderHeight="24" ng-disabled="isViewBusy" ng-change="onChangeBond()" 
+                    ng-model="vm.selectedBond" 
+                    ng-options="(item.bondCode + '&nbsp;&nbsp;&nbsp;&nbsp;' + item.shortName) for item in vm.calculationResult.deliverableBonds"></select>
+        </div>
+    </div>
+
+    <span class="cell size1 form-label">起息日</span>
+    <div class="cell form-value" style="width: auto;">
+        <span class="form-value" ng-bind="vm.selectedBond.interestStartDate | date:DATE_FORMAT"></span>
+        <span class="form-label">到期日</span>
+        <span class="form-value" ng-bind="vm.selectedBond.maturityDate | date:DATE_FORMAT"></span>
+    </div>
+
+    <span class="cell size1 form-label">付息频率</span>
+    <div class="cell size3 form-value" style="width: auto;">
+        <span class="form-value" ng-bind="vm.selectedBond.paymentFrequency.display"></span>
+        <span class="form-label">票息率</span>
+        <span class="form-value" ng-bind="vm.selectedBond.fixedCoupon"></span>
+        <span class="form-value-white">%</span>
+        <span class="form-label">转换因子</span>
+        <span class="form-value" style="color: #00f1a3;" ng-bind="vm.selectedBond.convertionFactor || '--'"></span>
+    </div>
+</div>
+
+<div class="row" ng-if="displayWhen([[0,1], [1,1], [2,1], [3,0], [3,1], [3,2], [3,3]])">
+    <!--ng-if="vm.selectedCalTgtType.value !== calTgtTypeButtons[3].value"-->
+    <span class="cell size1 form-label" ng-if="displayWhen([[0,1], [1,1], [2,1]])">发行日</span>
+    <div class="cell size2 form-value" ng-if="displayWhen([[0,1], [1,1], [2,1]])" style="width: auto;">
+        <div class="custom-input-container">
+            <select custom-select0-directive style="width: 200px;" renderWidth="200" renderHeight="24" ng-disabled="isViewBusy" ng-change="onChangeBond()" 
+                    ng-model="vm.selectedBond"
+                    ng-options="(item.issueStartDate.formatDate(DATE_FORMAT) + '&nbsp;&nbsp;&nbsp;&nbsp;' + item.shortName) for item in vm.calculationResult.deliverableBonds"></select>
+        </div>
+    </div>
+
+    <!--ng-if="vm.selectedCalTgtType.value === calTgtTypeButtons[3].value"-->
+    <span class="cell size1 form-label" ng-if="displayWhen([[3,1]])">发行日</span>
+    <span class="cell size1 form-label" ng-if="displayWhen([[3,0], [3,2], [3,3]])">CTD</span>
+    <div class="cell size2 form-value" ng-if="displayWhen([[3,0], [3,1], [3,2], [3,3]])" style="width: auto;">
+        <div class="custom-input-container">
+            <select custom-select0-directive style="width: 273px;" renderWidth="273" renderHeight="24" ng-disabled="isViewBusy" ng-change="onChangeBond()" 
+                    ng-model="vm.selectedBond"
+                    ng-options="(item.bondCode + '&nbsp;&nbsp;&nbsp;&nbsp;' + item.shortName) for item in vm.calculationResult.deliverableBonds"></select>
+        </div>
+    </div>
+
+    <span class="cell size1 form-label">起息日</span>
+    <div class="cell form-value" style="width: auto;">
+        <span class="form-value" ng-bind="vm.selectedBond.interestStartDate | date:DATE_FORMAT"></span>
+        <span class="form-label">到期日</span>
+        <span class="form-value" ng-bind="vm.selectedBond.maturityDate | date:DATE_FORMAT"></span>
+    </div>
+
+    <span class="cell size1 form-label">付息频率</span>
+    <div class="cell size1 form-value" style="width: auto;">
+        <span class="form-value" ng-bind="vm.selectedBond.paymentFrequency.display"></span>
+        <span class="form-label">票息率</span>
+        <input type="number" ng-model="vm.selectedBond.fixedCoupon" ng-disabled="isViewBusy" ng-keydown="onKeydownChangedProperty($event, 'vm.selectedBond.fixedCoupon', true)"/>
+        <span class="form-value-white">%</span>
+        <span class="form-label">转换因子</span>
+        <span class="form-value" style="color: #00f1a3;" ng-bind="vm.selectedBond.convertionFactor || '--'"></span>
+    </div>
+</div>
+
+<div class="row" ng-if="displayWhen([[0,2], [1,2], [2,2]])">
+    <span class="cell size1 form-label">债券代码</span>
+    <input class="search-box-directive cell size2 form-value bondCodeSearchBox" style="width: 200px;" 
+           ng-change="onChangeBondForSearch($event)" ng-model="vm.selectedBond" ng-disabled="isViewBusy"
+           item-source="searchedBondList" on-change-search-keyword="onChangeBondSearchKeyword($event, $cosEvent)" list-member-formatter="selectedBondListFormatter"/>
+
+    <span class="cell size1 form-label">起息日</span>
+    <div class="cell form-value" style="width: auto;">
+        <span class="form-value" ng-bind="vm.selectedBond.interestStartDate | date:DATE_FORMAT"></span>
+        <span class="form-label">到期日</span>
+        <span class="form-value" ng-bind="vm.selectedBond.maturityDate | date:DATE_FORMAT"></span>
+    </div>
+
+    <span class="cell size1 form-label">付息频率</span>
+    <div class="cell size1 form-value" style="width: auto;">
+        <span class="form-value" ng-bind="vm.selectedBond.paymentFrequency.display"></span>
+        <span class="form-label">票息率</span>
+        <span class="form-value" ng-bind="vm.selectedBond.fixedCoupon"></span>
+        <span class="form-value-white">%</span>
+        <span class="form-label">转换因子</span>
+        <span class="form-value" style="color: #00f1a3;" ng-bind="vm.selectedBond.convertionFactor || '--'"></span>
+    </div>
+</div>
+
+<!--ng-show="vm.selectedBondType.value === bondTypeButtons[3].value"-->
+
+<div class="row" ng-if="displayWhen([[0,3], [1,3], [2,3]])">
+    <span class="cell size1 form-label">债券代码</span>
+    <span class="cell size1 form-value" ng-bind="bondTypeButtons[3].display"></span>
+
+    <span class="cell size1 form-label">起息日</span>
+    <div class="cell form-value" style="width: auto;">
+        <div class="form-value custom-input-container">
+            <input date-picker-directive ng-disabled="isViewBusy" date-format="{{DATE_FORMAT}}"
+                   ng-model="vm.selectedBond.interestStartDate" ng-change="onChangePropperty('vm.selectedBond.interestStartDate')"/>
+        </div>
+        <span class="form-label">到期日</span>
+        <div class="form-value custom-input-container">
+            <input date-picker-directive ng-disabled="isViewBusy" date-format="{{DATE_FORMAT}}"
+                   ng-model="vm.selectedBond.maturityDate" ng-change="onChangePropperty('vm.selectedBond.maturityDate')"/>
+        </div>
+    </div>
+
+    <span class="cell size1 form-label">付息频率</span>
+    <div class="cell size1 form-value" style="width: auto;">
+        <div class="custom-input-container">
+            <select custom-select0-directive style="width: 10rem;" renderWidth="120" renderHeight="24" ng-change="onChangePropperty('vm.selectedBond.paymentFrequency')"
+                    ng-disabled="isViewBusy" ng-model="vm.selectedBond.paymentFrequency" ng-options="item.display for item in paymentFrequencys"></select>
+        </div>
+        <span class="form-label">票息率</span>
+        <input type="number" ng-model="vm.selectedBond.fixedCoupon" ng-keydown="onKeydownChangedProperty($event, 'vm.selectedBond.fixedCoupon', true)" ng-disabled="isViewBusy"/>
+        <span class="form-value-white">%</span>
+        <span class="form-label">转换因子</span>
+        <span class="form-value" style="color: #00f1a3;" ng-bind="vm.selectedBond.convertionFactor || '--'"></span>
+    </div>
+</div>
+
+<div class="row" ng-if="displayWhen([[0,0], [0,1], [0,2], [2,0], [2,1], [2,2], [3,0], [3,1], [3,2]])">
+    <span class="cell size1 form-label">收益率</span>
+
+    <div class="cell size2 form-value width-auto">
+        <input type="number" ng-model="vm.selectedBond.yield" ng-disabled="isViewBusy" step="0.01" ng-keydown="onKeydownChangedProperty($event, 'vm.selectedBond.yield')"/>
+        <span class="form-value">%</span>
+
+        <div class="toolbox" style="width: 11rem; display: inline-block; line-height: 2rem;" ng-click="onActiveButton(undefined, 'vm.selectedYieldType', true)">
+            <button ng-if="displayWhen([[0,0], [0,2], [2,0], [2,2], [3,0], [3,1], [3,2]])" style="margin-right: 5px;"
+                    ng-repeat="item in yieldTypeButtons" ng-bind="item.display" value="{{item.value}}" ng-class="{active: vm.selectedYieldType.value === '{{item.value}}'}"></button>
+        </div>
+    </div>
+
+    <span class="cell size1 form-label">债券净价</span>
+    <div class="cell form-value" style="width: auto;">
+        <input type="number" ng-model="vm.selectedBond.netPrice" ng-keydown="onKeydownChangedProperty($event, 'vm.selectedBond.netPrice')" ng-disabled="isViewBusy"/>
+        <span class="form-label">债券全价</span>
+        <input type="number" ng-model="vm.selectedBond.fullPrice" ng-keydown="onKeydownChangedProperty($event, 'vm.selectedBond.fullPrice')" ng-disabled="isViewBusy"/>
+    </div>
+</div>
+
+<div class="row" ng-if="displayWhen([[0,3], [2,3], [3,3]])">
+    <span class="cell size1 form-label">收益率</span>
+
+    <div class="cell size2 form-value width-auto">
+        <input type="number" ng-model="vm.selectedBond.yield" ng-disabled="isViewBusy" step="0.01" ng-keydown="onKeydownChangedProperty($event, 'vm.selectedBond.yield')" />
+        <span class="form-value">%</span>
+
+        <div class="toolbox" style="width: 11rem; display: inline-block; line-height: 2rem;" ng-click="onActiveButton(undefined, 'vm.selectedYieldType', true)">
+            <button ng-if="displayWhen([[3,3]])" style="margin-right: 5px;"
+                    ng-repeat="item in yieldTypeButtons" ng-bind="item.display" value="{{item.value}}" ng-class="{active: vm.selectedYieldType.value === '{{item.value}}'}"></button>
+        </div>
+    </div>
+
+    <span class="cell size1 form-label">债券净价</span>
+    <div class="cell form-value" style="width: auto;">
+        <input type="number" ng-model="vm.selectedBond.netPrice" ng-keydown="onKeydownChangedProperty($event, 'vm.selectedBond.netPrice')" ng-disabled="isViewBusy" />
+        <span class="form-label">债券全价</span>
+        <input type="number" ng-model="vm.selectedBond.fullPrice" ng-keydown="onKeydownChangedProperty($event, 'vm.selectedBond.fullPrice')" ng-disabled="isViewBusy" />
+    </div>
+</div>
+
+<div class="row row-hh" ng-if="displayWhen([[0,0], [0,2], [2,0], [2,2], [3,0], [3,1], [3,2], [3,3]])">
+    <span class="cell size1"></span>
+
+    <div class="cell size3">
+        <span class="form-label" style="width: auto;">最后更新</span>
+        <span class="form-value-white" ng-bind="(vm.selectedBond && vm.selectedBond.lastBondUpdateDate) ? (vm.selectedBond.lastBondUpdateDate | filetimeToDatetime).formatDate(DATETIME_FORMAT) : ''"></span>
+    </div>
+</div>
+
+<div class="row flex-just-center row-strong-tag bg-highlight" ng-if="vm.selectedCalTgtType.value === calTgtTypeButtons[0].value || vm.selectedCalTgtType.value === calTgtTypeButtons[2].value || vm.selectedCalTgtType.value === calTgtTypeButtons[3].value">
+    <div>
+        <button class="button-dark" ng-if="vm.selectedCalTgtType.value === calTgtTypeButtons[2].value || vm.selectedCalTgtType.value === calTgtTypeButtons[3].value">
+            <span class="mif-info" data-role="hint" ng-if="vm.selectedCalTgtType.value !== calTgtTypeButtons[2].value"
+                  data-hint="期货理论价格=（CTD净价-CTD持有收益）/CTD转换因子</br>CTD持有收益=利息收入-融资成本" 
+                  data-hint-position="top"></span>
+            <span class="mif-info" data-role="hint" ng-if="vm.selectedCalTgtType.value === calTgtTypeButtons[2].value"
+                  data-hint="用IRR计算公式反推期货价格。可修改“IRR”、“基差”、“净基差”重新计算期货价格。"
+                  data-hint-position="top"></span>
+            <span class="form-label">期货价格</span>
+            <span class="form-value" ng-bind="vm.selectedFuture.futurePrice"></span>
+        </button>
+        <button class="button-dark" ng-if="vm.selectedCalTgtType.value === calTgtTypeButtons[0].value || vm.selectedCalTgtType.value === calTgtTypeButtons[3].value">
+            <span class="mif-info"  data-role="hint" data-hint="IRR=(发票价格+期间付息–债券全价)/(债券全价*剩余天数/365-加权平均期间付息)" data-hint-position="top"></span>
+            <span class="form-label">IRR</span>
+            <span class="form-value" ng-bind="vm.calculationResult.calculationMainResult.irr | number:4"></span>
+            <span class="form-value-white">%</span>
+        </button>
+        <button class="button-dark" ng-if="vm.selectedCalTgtType.value === calTgtTypeButtons[0].value || vm.selectedCalTgtType.value === calTgtTypeButtons[3].value">
+            <span class="mif-info"  data-role="hint" data-hint="Basis=债券净价-期货价格*转换因子" data-hint-position="top"></span>
+            <span class="form-label">基差</span>
+            <span class="form-value" ng-bind="vm.calculationResult.calculationMainResult.basis | number:4"></span>
+        </button>
+        <button class="button-dark" ng-if="vm.selectedCalTgtType.value === calTgtTypeButtons[0].value || vm.selectedCalTgtType.value === calTgtTypeButtons[3].value">
+            <span class="mif-info"  data-role="hint" data-hint="BNOC=基差-持有期损益" data-hint-position="top"></span>
+            <span class="form-label">净基差</span>
+            <span class="form-value" ng-bind="vm.calculationResult.calculationMainResult.netBasis | number:4"></span>
+        </button>
+    </div>
+</div>
+
+<div class="row flex-just-center row-strong-tag bg-highlight" ng-if="vm.selectedCalTgtType.value === calTgtTypeButtons[1].value">
+    <div>
+        <button class="button-dark">
+            <span class="form-label">收益率</span>
+            <span class="form-value" ng-bind="vm.selectedBond.yield"></span>
+            <span class="form-value-white">%</span>
+        </button>
+        <button class="button-dark">
+            <span class="form-label">债券净价</span>
+            <span class="form-value" ng-bind="vm.selectedBond.netPrice"></span>
+        </button>
+        <button class="button-dark">
+            <span class="form-label">债券全价</span>
+            <span class="form-value" ng-bind="vm.selectedBond.fullPrice"></span>
+        </button>
+        <button class="button-dark">
+            <span class="form-label">T+1 收益率</span>
+            <span class="form-value" ng-bind="vm.selectedBond.yieldByDay"></span>
+            <span class="form-value-white">%</span>
+        </button>
+    </div>
+</div>
+
+<div class="row row-4-col">
+    <div>
+        <div class="subrow">
+            <span class="form-label">
+                <span class="mif-info" style="line-height: 4rem;" data-role="hint" data-hint="利差=IRR-资金成本" data-hint-position="top"></span>
+                <span>利差</span>
+            </span>
+            <span class="form-value" ng-bind-template="{{vm.calculationResult.interestsRateSpread}} BP"></span>
+        </div>
+        <div class="subrow">
+            <span class="form-label">
+                <span class="mif-info" style="line-height: 4rem;" data-role="hint" data-hint="期现价差=发票价格-债券全价" data-hint-position="bottom"></span>
+                <span>期现价差</span>
+            </span>
+            <span class="form-value" ng-bind="vm.calculationResult.futureSpotSpread"></span>
+        </div>
+    </div>
+    <div>
+        <div class="subrow">
+            <span class="form-label">
+                <span class="mif-info" style="line-height: 4rem;" data-role="hint" data-hint="Carry=交割日应计利息-交易日应计利息+期间付息+期间付息再投资-期货全价*资金成本*剩余天数/365" data-hint-position="top"></span>
+                <span>持有期损益</span>
+            </span>
+
+            <span class="form-value" ng-bind="vm.calculationResult.carry"></span>
+        </div>
+        <div class="subrow">
+            <span class="form-label">
+                <span class="mif-info" style="line-height: 4rem;" data-role="hint" data-hint="Receipt Price=期货价格*转换因子+交割日应计利息" data-hint-position="bottom"></span>
+                <span>发票价格</span>
+            </span>
+            <span class="form-value" ng-bind="vm.calculationResult.receiptPrice"></span>
+        </div>
+    </div>
+    <div>
+        <div class="subrow">
+            <span class="form-label">交易日应计算利息</span>
+            <span class="form-value" ng-bind="vm.calculationResult.interestOnSettlementDate"></span>
+        </div>
+        <div class="subrow">
+            <span class="form-label">交割日应计算利息</span>
+            <span class="form-value" ng-bind="vm.calculationResult.interestOnTradingDate"></span>
+        </div>
+    </div>
+    <div>
+        <div class="subrow">
+            <span class="form-label">
+                <span class="mif-info" style="line-height: 4rem;" data-role="hint" data-hint="剩余天数内的实际付息" data-hint-position="top"></span>
+                <span>期间付息</span>
+            </span>
+            <span class="form-value" ng-bind="vm.calculationResult.interestDuringHolding | number: 4"></span>
+        </div>
+        <div class="subrow">
+            <span class="form-label">
+                <span class="mif-info" style="line-height: 4rem;" data-role="hint" data-hint="按每个付息日到结算日的年化剩余天数加权的实际付息" data-hint-position="bottom"></span>
+                <span>加权平均期间付息</span>
+            </span>
+            <span class="form-value" ng-bind="vm.calculationResult.weightedAverageInterest"></span>
+        </div>
+    </div>
+</div>
+
+<div class="row flex-just-center bg-highlight" style="text-align: center;">
+    <button class="margin20" style="width: 12rem; height: 2.5rem; line-height: 2.5rem;" ng-click="onKeydownChangedProperty({'keyCode': 13})">重新计算</button>
+    <button class="margin20" style="width: 12rem; height: 2.5rem; line-height: 2.5rem;" ng-click="onClickSaveResult($event)">保存结果</button>
+</div>

@@ -1,0 +1,26 @@
+﻿<div class="ng-pristine ng-untouched ng-valid" style="display: inline-flex; vertical-align: middle;">
+
+    <svg xmln="http://www.w3.org/2000/svg" version="1.1" style="height: 24px; width: 120px; padding: 0px;">
+        <defs>
+            <clipPath id="cut-off-select-1-{{idSeq}}"><polygon points="0,0 96,0 96,24 0,24 0,0" style="fill-rule: evenodd;"></polygon></clipPath>
+        </defs>
+        <foreignObject clip-path="url(#cut-off-select-1-{{idSeq}})" height="24" width="120">
+            <select style="width: 10rem; /* line-height: 2rem; */" ng-change="onChange()" ng-disabled="isViewBusy" ng-model="modelValue" ng-options="item.tfId for item in futures" class="ng-not-empty">
+                <option label="TF1612" value="object:143" selected="selected">TF1612</option>
+                <option label="T1612" value="object:144">T1612</option>
+                <option label="T1703" value="object:145">T1703</option>
+                <option label="T1706" value="object:146">T1706</option>
+                <option label="TF1703" value="object:147">TF1703</option>
+                <option label="TF1706" value="object:148">TF1706</option>
+            </select>
+        </foreignObject>
+    </svg>
+
+    <button class="button-dark" ng-disabled="isViewBusy"
+            style="margin-left: -24px; -ms-border-top-left-radius: 0px; border-top-left-radius: 0px; -ms-border-bottom-left-radius: 0px; border-bottom-left-radius: 0px; border: none;
+            height: 24px; width: 24px; padding: 0px;">
+        <svg xmln="http://www.w3.org/2000/svg" version="1.1" style="height: 24px; width: 24px;">
+            <polygon version="1.1" points="8.4,8.4 12,15.6 15.6,8.4" style="fill-rule: evenodd; fill: white;"></polygon>
+        </svg>
+    </button>
+</div>

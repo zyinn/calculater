@@ -1,0 +1,358 @@
+﻿
+/* ReSharper disable UnknownCssVendorExtension */
+button, select,
+input[type=text],
+input[type=date],
+input[type=number],
+input[type=search],
+.select2-container .select2-choice {
+    border: none;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+}
+
+input {
+    line-height: initial;
+}
+
+    input[type=text],
+    input[type=number] {
+        margin-right: 5px;
+    }
+
+    input[type=number] {
+        padding-left: 3px;
+        padding-right: 0;
+    }
+
+    input.hasDatepicker {
+        width: 10rem;
+    }
+
+    input.hasDatepicker,
+    input[type=text],
+    input[type=date] {
+        padding: 3px 5px;
+    }
+
+    input[type=search] {
+        padding: 0 5px;
+    }
+
+    input.hasDatepicker,
+    input[type=number],
+    input[type=date],
+    select {
+        height: 2rem;
+    }
+
+.calendar-icon {
+    margin-left: -2rem;
+    color: black;
+}
+
+.tabItem:first-child {
+    margin-left: 0;
+}
+
+.tabItem {
+    padding: 5px 20px;
+    margin: 0;
+    margin-left: -35px;
+    width: 160px;
+    text-align: center;
+    font-weight: bold;
+}
+
+    .tabItem.active {
+        z-index: 5;
+    }
+
+nav.tabControl > a {
+    position: relative;
+    display: inline-block;
+}
+
+    nav.tabControl > a::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        -ms-border-radius: 3px;
+        border-radius: 3px;
+        border-bottom: none;
+        -webkit-transform: perspective(.5em) rotateX(5deg);
+        -moz-transform: perspective(.5em) rotateX(5deg);
+        -ms-transform: perspective(.5em) rotateX(5deg);
+        -o-transform: perspective(.5em) rotateX(5deg);
+        transform: perspective(.5em) rotateX(5deg);
+        -webkit-transform-origin: bottom;
+        -moz-transform-origin: bottom;
+        -ms-transform-origin: bottom;
+        -o-transform-origin: bottom;
+        transform-origin: bottom;
+    }
+
+/******************************************************************************************************/
+/* ui.select */
+/******************************************************************************************************/
+
+/*.ui-select-container > .ui-select-match,
+.ui-select-container > .ui-select-match > .ui-select-toggle,
+.ui-select-container > input[type=text],
+.ui-select-container > .ui-select-choices {
+    border: none;
+    width: 10rem;
+}
+
+.ui-select-container > .ui-select-match,
+.ui-select-container > input[type=text],
+.ui-select-container > .ui-select-match > .ui-select-toggle,
+.ui-select-container > .ui-select-match > .ui-select-toggle > .ui-select-match-text {
+    height: 2rem;
+}
+
+.ui-select-container .ui-select-toggle {
+    padding: 3px 6px;
+}*/
+
+/******************************************************************************************************/
+/* customSelect0 */
+/******************************************************************************************************/
+
+.customSelect0_expend button:focus {
+    outline: none;
+}
+
+.customSelect0_expend button:hover {
+    cursor: default;
+}
+
+/* ReSharper restore UnknownCssVendorExtension */
+
+/******************************************************************************************************/
+/* ui.datepicker */
+/******************************************************************************************************/
+.ui-datepicker {
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+.hasDatepicker {
+    border: none;
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-prev-hover {
+    left: 0;
+    padding: 3px 0 0 5px;
+}
+
+
+.ui-datepicker .ui-datepicker-next {
+    right: 15px;
+    padding: 3px 15px 0 0;
+}
+
+    .ui-datepicker .ui-datepicker-prev span,
+    .ui-datepicker .ui-datepicker-next span {
+        white-space: nowrap;
+        margin: 3px 0 0 0;
+        left: 0;
+        top: 0;
+        padding: 3px;
+    }
+
+
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+    height: 1.5rem;
+}
+
+
+.ui-datepicker select.ui-datepicker-month {
+    width: 30%;
+}
+
+.ui-datepicker select.ui-datepicker-year {
+    width: 35%;
+}
+
+.ui-datepicker .ui-datepicker-title {
+    margin: 0 5rem;
+    padding: 0;
+    background: white;
+}
+
+.hasDatepicker,
+.ui-datepicker,
+.ui-datepicker .ui-datepicker-title,
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span,
+.ui-datepicker td a:hover {
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+}
+
+    .ui-datepicker td span,
+    .ui-datepicker td a {
+        text-align: center;
+    }
+
+
+/******************************************************************************************************/
+/* spin */
+/******************************************************************************************************/
+
+.spin {
+    background: #444;
+}
+
+    /* outline */
+    .spin > * {
+        background: #EEE; /* hand */
+    }
+
+/******************************************************************************************************/
+/* hint */
+/******************************************************************************************************/
+
+.hint .hint-title, .hint .hint-text {
+    color: inherit;
+    text-align: left;
+}
+
+.hint {
+    position: fixed;
+    color: #1d1d1d;
+    padding: 10px;
+    font-size: 12px;
+    width: auto;
+    max-width: 220px;
+    margin-top: 10px;
+    z-index: 1030;
+    display: none;
+    border: 1px #eee solid;
+}
+
+/******************************************************************************************************/
+/* scrollbar */
+/******************************************************************************************************/
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 16px;
+    background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -ms-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    -ms-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+/******************************************************************************************************/
+/* Checkbox */
+/******************************************************************************************************/
+
+.input-control.checkbox input[type="checkbox"]:checked ~ .check:before, .input-control.radio input[type="checkbox"]:checked ~ .check:before, .input-control.checkbox input[type="radio"]:checked ~ .check:before, .input-control.radio input[type="radio"]:checked ~ .check:before {
+    border-color: white;
+    background-color: transparent;
+    -webkit-transition: all 0.01s linear;
+    -moz-transition: all 0.01s linear;
+    -ms-transition: all 0.01s linear;
+    -o-transition: all 0.01s linear;
+    transition: all 0.01s linear;
+}
+
+.input-control.checkbox .check, .input-control.radio .check {
+    width: 1.625rem;
+    height: 1.625rem;
+    background-color: transparent;
+    border: 1px #999999 solid;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+    padding: 0;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+/******************************************************************************************************/
+/* searchBoxDirective */
+/******************************************************************************************************/
+
+.search-box-directive ul.dropdown-menu {
+}
+
+    .search-box-directive ul.dropdown-menu > li {
+    white-space: pre;
+        padding: 3px 10px;
+    }
+
+        .search-box-directive ul.dropdown-menu > li.active,
+        .search-box-directive ul.dropdown-menu > li:focus,
+        .search-box-directive ul.dropdown-menu > li:hover {
+            
+        }
+
+
+.search-box-directive.dropup,
+.search-box-directive.dropdown {
+  position: relative;
+}
+
+.search-box-directive .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+.search-box-directive.open > .dropdown-menu {
+  display: block;
+}
+
+/******************************************************************************************************/
+/* input type=number */
+/******************************************************************************************************/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin-right: 10px;
+}

@@ -1,0 +1,75 @@
+﻿#tfcalculator-tc .row {
+    background: #171919;
+}
+
+#tfcalculator-tc .form-label,
+#tfcalculator-tc #tcResultList table th {
+    color: #FFEBC8;
+}
+
+#tfcalculator-tc .form-value-white {
+    color: white;
+}
+
+#tfcalculator-tc .form-value,
+#tfcalculator-tc #tcResultList table td {
+    color: #F9BD6E;
+}
+
+#tfcalculator-tc .tc-header,
+#tfcalculator-tc .bg-highlight,
+#tfcalculator-tc .row-4-col,
+#tfcalculator-tc nav.button-nav > button {
+    background: #062E2E;
+}
+
+#tfcalculator-tc .bg-highlight-2 {
+    background: #174444;
+}
+
+#tfcalculator-tc .bondCodeDropdown .prepend-icon {
+    color: black;
+}
+
+#tfcalculator-tc nav.button-nav > a {
+}
+
+#tfcalculator-tc #tcResultList table thead {
+    background: black;
+}
+
+#tfcalculator-tc #tcResultList table tbody > tr:nth-child(odd) {
+    background: #0F0F0F;
+}
+
+
+#tfcalculator-tc .row-4-col > div:first-child {
+    border-right: 1px solid #174444;
+}
+
+#tfcalculator-tc .row-4-col > div:nth-child(3),
+#tfcalculator-tc .row-4-col > div:last-child {
+    border-left: 1px solid #174444;
+}
+
+#tfcalculator-tc .tc-header .toolbox button {
+    background: #165456;
+    color: white;
+}
+
+    #tfcalculator-tc .tc-header .toolbox button.active {
+        background: #FF900D;
+        color:black;
+    }
+
+    #tfcalculator-tc nav.button-nav > button.active {
+        background: #0F898A;
+        color: white;
+    }
+
+#tfcalculator-tc .row-strong-tag > div > button {
+}
+
+#tfcalculator-tc nav.button-nav {
+    border-bottom: 2px solid #0F898A;
+}

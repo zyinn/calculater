@@ -1,0 +1,15 @@
+/Java/.idea
+/Java/target
+/Java/tfcalculator.iml
+/Java/src/main/webapp/tfcalculator/.ntvs_analysis.dat
+/Java/src/main/webapp/tfcalculator/node_modules
+/Java/src/main/webapp/tfcalculator/bower_components
+/Java/src/main/webapp/tfcalculator/mock
+
+/Java/src/main/webapp/.vs/config/applicationhost.config
+/Java/log/dif.log
+/Java/src/main/webapp/tfcalculator/.ntvs_analysis.dat.tmp
+/Java/log/
+log/
+
+target/classes/*

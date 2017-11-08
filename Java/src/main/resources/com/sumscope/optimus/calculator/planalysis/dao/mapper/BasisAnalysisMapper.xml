@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sumscope.optimus.calculator.planalysis.dao.mapper.BasisAnalysisMapper">
+    <select id="getFutureContracts"
+            resultType="com.sumscope.optimus.calculator.planalysis.model.dto.FutureContractDto">
+        SELECT fund.TF_KEY AS tfKey, fund.TF_ID AS tfId, bDay.next_bday AS startDate, date_format(fund.last_trading_day,'%Y-%m-%d') AS maturityDate,date_format(fund.delivery_date,'%Y-%m-%d') AS deliveryDate
+        FROM TF_Fundamental fund, next_business_day bDay
+        WHERE bDay.lookup_date = CURDATE() AND bDay.market_type = 'CIB' and date_format(fund.Last_Trading_Day,'%Y-%m-%d') >= now()
+        order by fund.TF_ID asc;
+    </select>
+
+    <select id="getDeliverableBondsKey" resultType="java.util.HashMap">
+        select Bond_Key from TF_Conversion_Factor factor where  factor.TF_Key = '${tfKey}'
+    </select>
+
+
+    <select id="getDeliverableBonds" resultType="com.sumscope.optimus.calculator.planalysis.model.dbmodel.BondInfo">
+        SELECT bond.Bond_Key AS bondKey, 'CIB' AS listedMarket, CONCAT(`bond`.`Bond_ID`, ".IB") AS bondCode,
+        bond.Interest_Start_Date AS startDate, bond.maturity_date AS maturityDate, bond.Issue_Rate AS fixedCoupon,
+        bond.Coupon_Frequency AS paymentFrequency,
+        bond.Interest_Basis AS dayCount
+        from bond bond
+        where
+        <if test="bondKeyList != null">
+            bond.Bond_Key in ( '${bondKeyList}') AND
+        </if>
+        bond.delflag = '0' and bond.is_cib = 'Y';
+    </select>
+
+    <select id="findBondsByNamePrefix"
+            resultType="com.sumscope.optimus.calculator.planalysis.model.dto.BondPrimaryKeyDto">
+        SELECT 'CIB' AS listedMarket, bond.Bond_Key AS bondKey, CONCAT(`bond`.`Bond_ID`, ".IB") AS `bondCode`,bond.Short_Name AS shortName
+        FROM bond bond
+        WHERE bond.delflag = '0' AND bond.bond_id like '${codePrefix}%' AND bond.Coupon_Type = 'FRB' AND bond.is_cib = 'Y' AND bond.maturity_date > date_format(now(),'%Y%m%d')
+        ORDER BY bond.Bond_Key;
+    </select>
+
+    <select id="getBondInfo" resultType="com.sumscope.optimus.calculator.planalysis.model.dbmodel.BondInfo">
+        SELECT 'CIB' AS listedMarket, bond.Bond_Key AS bondKey, CONCAT(`bond`.`Bond_ID`, ".IB") AS `bondCode`,
+        bond.Interest_Start_Date AS startDate, bond.maturity_date AS maturityDate, bond.Issue_Rate AS fixedCoupon, bond.Coupon_Frequency AS paymentFrequency,
+        bond.Interest_Basis AS dayCount
+      from bond bond
+      where bond.bond_key = '${bondKey}' and bond.delflag = '0' and bond.delflag = '0' AND bond.is_cib = 'Y';
+    </select>
+
+</mapper>

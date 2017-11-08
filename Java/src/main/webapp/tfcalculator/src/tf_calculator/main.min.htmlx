@@ -1,0 +1,6 @@
+﻿<!-- ReSharper disable Html.PathError -->
+<link href="tf_calculator/style/tcStyle.min.css" rel="stylesheet" />
+<!-- ReSharper restore Html.PathError -->
+
+<div id="tfcalculator-tc" ng-controller="tc.mainCtrl">
+</div>

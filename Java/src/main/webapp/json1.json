@@ -1,0 +1,280 @@
+{
+    "calculationResult": {
+        "calculationMainResult": null,
+        "interestRateSpread": null,
+        "futureSpotSpread": null,
+        "carry": null,
+        "receiptPrice": null,
+        "interestOnSettlementDate": null,
+        "interestOnTradingDate": null,
+        "interestDuringHolding": null,
+        "weightedAverageInterest": null,
+        "defaultFuturePrice": {
+            "futurePrice": 100.72,
+            "lastUpdateDatetime": 1472451258585
+        },
+        "deliverableBonds": [
+            {
+                "bondCode": "160002.IB",
+                "bondKey": "Z0003002016GOVBGB02",
+                "listedMarket": "CIB",
+                "shortName": "16附息国债02",
+                "interestStartDate": "2016-01-14",
+                "maturityDate": "2021-01-14",
+                "fixedCoupon": 2.53,
+                "paymentFrequency": "A",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "110019.IB",
+                "bondKey": "Z0003002011GOVBGB19",
+                "listedMarket": "CIB",
+                "shortName": "11附息国债19",
+                "interestStartDate": "2011-08-18",
+                "maturityDate": "2021-08-18",
+                "fixedCoupon": 3.93,
+                "paymentFrequency": "S",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "100034.IB",
+                "bondKey": "Z0003002010GOVBGB34",
+                "listedMarket": "CIB",
+                "shortName": "10附息国债34",
+                "interestStartDate": "2010-10-28",
+                "maturityDate": "2020-10-28",
+                "fixedCoupon": 3.67,
+                "paymentFrequency": "S",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "140003.IB",
+                "bondKey": "Z0003002014GOVBGB03",
+                "listedMarket": "CIB",
+                "shortName": "14附息国债03",
+                "interestStartDate": "2014-01-16",
+                "maturityDate": "2021-01-16",
+                "fixedCoupon": 4.44,
+                "paymentFrequency": "A",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "140024.IB",
+                "bondKey": "Z0003002014GOVBGB24",
+                "listedMarket": "CIB",
+                "shortName": "14附息国债24",
+                "interestStartDate": "2014-10-23",
+                "maturityDate": "2021-10-23",
+                "fixedCoupon": 3.7,
+                "paymentFrequency": "A",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "160015.IB",
+                "bondKey": "Z0003002016GOVBGB15",
+                "listedMarket": "CIB",
+                "shortName": "16附息国债15",
+                "interestStartDate": "2016-07-14",
+                "maturityDate": "2021-07-14",
+                "fixedCoupon": 2.65,
+                "paymentFrequency": "A",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "160007.IB",
+                "bondKey": "Z0003002016GOVBGB07",
+                "listedMarket": "CIB",
+                "shortName": "16附息国债07",
+                "interestStartDate": "2016-04-14",
+                "maturityDate": "2021-04-14",
+                "fixedCoupon": 2.58,
+                "paymentFrequency": "A",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "100041.IB",
+                "bondKey": "Z0003002010GOVBGB41",
+                "listedMarket": "CIB",
+                "shortName": "10附息国债41",
+                "interestStartDate": "2010-12-16",
+                "maturityDate": "2020-12-16",
+                "fixedCoupon": 3.77,
+                "paymentFrequency": "S",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "110015.IB",
+                "bondKey": "Z0003002011GOVBGB15",
+                "listedMarket": "CIB",
+                "shortName": "11附息国债15",
+                "interestStartDate": "2011-06-16",
+                "maturityDate": "2021-06-16",
+                "fixedCoupon": 3.99,
+                "paymentFrequency": "S",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "130020.IB",
+                "bondKey": "Z0003002013GOVBGB20",
+                "listedMarket": "CIB",
+                "shortName": "13附息国债20",
+                "interestStartDate": "2013-10-17",
+                "maturityDate": "2020-10-17",
+                "fixedCoupon": 4.07,
+                "paymentFrequency": "A",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "140013.IB",
+                "bondKey": "Z0003002014GOVBGB13",
+                "listedMarket": "CIB",
+                "shortName": "14附息国债13",
+                "interestStartDate": "2014-07-03",
+                "maturityDate": "2021-07-03",
+                "fixedCoupon": 4.02,
+                "paymentFrequency": "A",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "060019.IB",
+                "bondKey": "Z0003002006GOVBGB19",
+                "listedMarket": "CIB",
+                "shortName": "06国债19",
+                "interestStartDate": "2006-11-15",
+                "maturityDate": "2021-11-15",
+                "fixedCoupon": 3.27,
+                "paymentFrequency": "S",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "140006.IB",
+                "bondKey": "Z0003002014GOVBGB06",
+                "listedMarket": "CIB",
+                "shortName": "14附息国债06",
+                "interestStartDate": "2014-04-03",
+                "maturityDate": "2021-04-03",
+                "fixedCoupon": 4.33,
+                "paymentFrequency": "A",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "050012.IB",
+                "bondKey": "Z0003002005GOVBGB12",
+                "listedMarket": "CIB",
+                "shortName": "05国债12",
+                "interestStartDate": "2005-11-15",
+                "maturityDate": "2020-11-15",
+                "fixedCoupon": 3.65,
+                "paymentFrequency": "S",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "110002.IB",
+                "bondKey": "Z0003002011GOVBGB02",
+                "listedMarket": "CIB",
+                "shortName": "11附息国债02",
+                "interestStartDate": "2011-01-20",
+                "maturityDate": "2021-01-20",
+                "fixedCoupon": 3.94,
+                "paymentFrequency": "S",
+                "dayCount": "BAA"
+            },
+            {
+                "bondCode": "110024.IB",
+                "bondKey": "Z0003002011GOVBGB24",
+                "listedMarket": "CIB",
+                "shortName": "11附息国债24",
+                "interestStartDate": "2011-11-17",
+                "maturityDate": "2021-11-17",
+                "fixedCoupon": 3.57,
+                "paymentFrequency": "S",
+                "dayCount": "BAA"
+            }
+        ],
+        "bondConvertionFactor": [
+            {
+                "bondKey": "Z0003002014GOVBGB03",
+                "convertionFactor": 1.0576
+            },
+            {
+                "bondKey": "Z0003002006GOVBGB19",
+                "convertionFactor": 1.0128
+            },
+            {
+                "bondKey": "Z0003002014GOVBGB06",
+                "convertionFactor": 1.056
+            },
+            {
+                "bondKey": "Z0003002011GOVBGB19",
+                "convertionFactor": 1.0422
+            },
+            {
+                "bondKey": "Z0003002014GOVBGB24",
+                "convertionFactor": 1.0325
+            },
+            {
+                "bondKey": "Z0003002011GOVBGB02",
+                "convertionFactor": 1.0379
+            },
+            {
+                "bondKey": "Z0003002011GOVBGB24",
+                "convertionFactor": 1.0271
+            },
+            {
+                "bondKey": "Z0003002016GOVBGB07",
+                "convertionFactor": 0.9822
+            },
+            {
+                "bondKey": "Z0003002016GOVBGB02",
+                "convertionFactor": 0.9811
+            },
+            {
+                "bondKey": "Z0003002010GOVBGB34",
+                "convertionFactor": 1.0256
+            },
+            {
+                "bondKey": "Z0003002011GOVBGB15",
+                "convertionFactor": 1.0435
+            },
+            {
+                "bondKey": "Z0003002016GOVBGB15",
+                "convertionFactor": 0.9844
+            },
+            {
+                "bondKey": "Z0003002010GOVBGB41",
+                "convertionFactor": 1.0305
+            },
+            {
+                "bondKey": "Z0003002005GOVBGB12",
+                "convertionFactor": 1.0253
+            },
+            {
+                "bondKey": "Z0003002014GOVBGB13",
+                "convertionFactor": 1.0452
+            },
+            {
+                "bondKey": "Z0003002013GOVBGB20",
+                "convertionFactor": 1.0405
+            }
+        ],
+        "defaultBondPrice": {
+            "yield": 2.58,
+            "netPrice": null,
+            "fullPrice": null,
+            "yieldType": "ofr",
+            "lastBondUpdateDate": null
+        }
+    },
+    "selectedCalTgtType": {
+        "value": "IRR_BASE",
+        "display": "IRR/基差",
+        "$$hashKey": "object:49"
+    },
+    "selectedFuture": {
+        "tfKey": "CFFEXTF05100030000A9",
+        "tfId": "T1609",
+        "startDate": "1473350400000",
+        "maturityDate": "1473782400000",
+        "$$hashKey": "object:44"
+    }
+}

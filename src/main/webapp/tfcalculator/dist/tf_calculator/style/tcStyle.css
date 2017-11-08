@@ -1,0 +1,289 @@
+#tfcalculator-tc .row {
+    background: #171919;
+}
+
+#tfcalculator-tc .form-label,
+#tfcalculator-tc #tcResultList table.row th {
+    color: #FFEBC8;
+}
+
+#tfcalculator-tc .form-value-white {
+    color: white;
+}
+
+#tfcalculator-tc .form-value,
+#tfcalculator-tc #tcResultList table.row td {
+    color: #F9BD6E;
+}
+
+#tfcalculator-tc .tc-header,
+#tfcalculator-tc .bg-highlight,
+#tfcalculator-tc .row-4-col,
+#tfcalculator-tc nav.button-nav > button {
+    background: #062E2E;
+}
+
+#tfcalculator-tc .bg-highlight-2 {
+    background: #174444;
+}
+
+
+#tfcalculator-tc nav.button-nav > a {
+}
+
+#tfcalculator-tc #tcResultList table.row thead {
+    background: black;
+}
+
+#tfcalculator-tc #tcResultList table.row tbody > tr:nth-child(odd) {
+    background: #0F0F0F;
+}
+
+
+#tfcalculator-tc .row-4-col > div:first-child {
+    border-right: 1px solid #174444;
+}
+
+#tfcalculator-tc .row-4-col > div:nth-child(3),
+#tfcalculator-tc .row-4-col > div:last-child {
+    border-left: 1px solid #174444;
+}
+
+#tfcalculator-tc .tc-header .toolbox button {
+    background: #165456;
+    color: white;
+}
+
+    #tfcalculator-tc .tc-header .toolbox button.active {
+        background: #FF900D;
+        color: black;
+    }
+
+    #tfcalculator-tc nav.button-nav > button.active {
+        background: #0F898A;
+        color: white;
+    }
+
+#tfcalculator-tc .row-strong-tag > div > button {
+}
+
+#tfcalculator-tc nav.button-nav {
+    border-bottom: 2px solid #0F898A;
+}
+
+
+
+#tfcalculator-tc .hasDatepicker {
+    width: 14rem;
+}
+
+#tfcalculator-tc .width-auto {
+    width: auto;
+}
+
+#tfcalculator-tc .row {
+    margin: 0;
+    padding: 0;
+}
+
+    #tfcalculator-tc .row > span,
+    #tfcalculator-tc .row > div {
+        line-height: 4rem;
+    }
+
+#tfcalculator-tc .form-label {
+    padding: 0;
+    text-align: right;
+    white-space: nowrap;
+}
+
+    #tfcalculator-tc .form-label:before {
+    }
+
+    #tfcalculator-tc .form-label:after {
+        margin: 0 3px;
+        content: "\003a";
+    }
+
+#tfcalculator-tc .form-value {
+    text-align: left;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+    #tfcalculator-tc .form-value input[type=number] {
+        vertical-align: middle;
+        width: 7rem;
+        text-align: right;
+        line-height: normal;
+    }
+
+    #tfcalculator-tc .form-value > .form-label {
+        padding-left: 15px;
+    }
+
+    #tfcalculator-tc .form-value > div {
+        padding: 0;
+    }
+
+#tfcalculator-tc .tc-header {
+}
+
+#tfcalculator-tc .selectedFutureContract {
+}
+
+#tfcalculator-tc .row-strong-tag {
+    text-align: center;
+}
+
+    #tfcalculator-tc .row-strong-tag > div {
+        height: 8rem;
+    }
+
+        #tfcalculator-tc .row-strong-tag > div > button {
+            margin: 2rem 0.5rem;
+            width: 15rem;
+            height: 4rem;
+            -ms-border-radius: 2rem;
+            border-radius: 2rem;
+        }
+
+#tfcalculator-tc .row-4-col {
+    display: flex;
+    text-align: center;
+    padding: 0 10%;
+}
+
+    #tfcalculator-tc .row-4-col > div {
+        -ms-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+    }
+
+    #tfcalculator-tc .row-4-col .subrow {
+        display: flex;
+        text-align: center;
+    }
+
+
+    #tfcalculator-tc .row-4-col > div .form-label {
+        text-align: left;
+        padding-left: 20%;
+    }
+
+    #tfcalculator-tc .row-4-col > div .form-value {
+        text-align: right;
+        padding-right: 20%;
+    }
+
+    #tfcalculator-tc .row-4-col > div .form-label,
+    #tfcalculator-tc .row-4-col > div .form-value {
+        -ms-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+    }
+
+#tfcalculator-tc .tc-header button {
+    line-height: 2rem;
+    padding: 0 20px;
+    margin: 0 10px 0 0;
+}
+
+#tfcalculator-tc #tcResultList .row:first-child {
+    border-top: 1px solid black;
+}
+
+#tfcalculator-tc #tcResultList table.row {
+    width: 100%;
+}
+
+    #tfcalculator-tc #tcResultList table.row th,
+    #tfcalculator-tc #tcResultList table.row td {
+        text-align: right;
+    }
+
+    #tfcalculator-tc #tcResultList table.row tr {
+        line-height: 2.5rem;
+    }
+
+        #tfcalculator-tc #tcResultList table.row th:last-child,
+        #tfcalculator-tc #tcResultList table.row tr > td:last-child {
+            padding-right: 20px;
+        }
+
+    #tfcalculator-tc #tcResultList table.row tbody > tr > td:first-child {
+        width: 5%;
+    }
+
+    #tfcalculator-tc #tcResultList table.row [class^="checkboxFive-"] label {
+        margin-bottom: 0;
+    }
+
+    #tfcalculator-tc #tcResultList table.row thead > tr > th:first-child > [class^="checkboxFive-"],
+    #tfcalculator-tc #tcResultList table.row tbody > tr > td:first-child > [class^="checkboxFive-"] {
+        margin-left: 45%;
+        margin-bottom: 0;
+        top: 5px;
+    }
+
+    #tfcalculator-tc #tcResultList table.row tbody > tr > td:nth-child(2) {
+        width: 5%;
+    }
+
+#tfcalculator-tc #tcResultList .row span {
+    line-height: 2.5rem;
+}
+
+#tfcalculator-tc #tcResultList .row button {
+    line-height: 2rem;
+    padding: 0 20px;
+}
+
+
+#tfcalculator-tc nav.button-nav {
+    line-height: 1.7rem;
+}
+
+    /* ReSharper disable UnknownCssVendorExtension */
+    #tfcalculator-tc nav.button-nav > button {
+        position: relative;
+        display: inline-block;
+        padding: 3px 25px;
+        line-height: 1.7rem;
+        -ms-border-bottom-left-radius: 0;
+        border-bottom-left-radius: 0;
+        -ms-border-bottom-right-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-left: 2px;
+    }
+/* ReSharper restore UnknownCssVendorExtension */
+
+
+
+
+@media screen and (max-width: 1366px) {
+    #tfcalculator-tc .hasDatepicker {
+        width: 10rem;
+    }
+
+    #tfcalculator-tc .tc-header .form-value {
+        width: auto;
+    }
+
+    #tfcalculator-tc .tc-header > .form-value:last-child {
+        padding-left: 15px;
+    }
+
+    #tfcalculator-tc .row-4-col {
+        padding: 0 5%;
+    }
+
+        #tfcalculator-tc .row-4-col > div .form-label {
+            padding-left: 10%;
+        }
+
+        #tfcalculator-tc .row-4-col > div .form-value {
+            padding-right: 10%;
+        }
+}

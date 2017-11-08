@@ -1,0 +1,2 @@
+D:\Sumscope\tfcalculator\Java\src\main\webapp\tfcalculator\obj\Debug\tfcalculator.njsprojResolveAssemblyReference.cache
+D:\Sumscope\tfcalculator\Java\src\main\webapp\tfcalculator\bin\Microsoft.NodejsTools.WebRole.dll

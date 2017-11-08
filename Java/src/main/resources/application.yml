@@ -1,0 +1,44 @@
+application:
+    reporates_link: "${reporateslink_ip_with_port}"
+    port: 8888
+
+spring:
+  # default datasource
+  datasource-primary:
+    url: "${application_datasource_url}"
+    driverClassName: "${application_datasource_driver}"
+    username: ${application_datasource_user}
+    password: "${application_datasource_password}"
+    min-idle: 1
+    max-idle: 1
+    max-active: 20
+    initial-size: 1
+    validation-query: "SELECT 1"
+    test-on-borrow: true
+
+calculator:
+  url: "${calculator_url}"
+
+TfCalculator:
+  tfCalculator_url : "${tfCalculator_url}"
+
+# 外部系统相关设置
+external:
+  #CDH登录
+  cdhLogin: "${cdhlogin}"
+  username: "${cdhlogin_User}"
+  password: "${cdhlogin_Password}"
+  expireInSeconds: "${cdhlogin_ExpireInSeconds}"
+  # CDH应用调用位置
+  shiborUrl: "${external_shiborUrl}"
+  # CDH应用超时设置，单位毫秒
+  httpReadTimeout: 8000
+
+spring.mvc.dispatch-options-request: true
+
+#redis获取期货价格
+redis:
+    spring_redis_host: "${spring.redis.host}"
+    spring_redis_port: 6379
+
+

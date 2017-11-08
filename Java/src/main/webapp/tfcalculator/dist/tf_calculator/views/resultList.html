@@ -1,0 +1,62 @@
+<div class="row bg-highlight-2">
+    <span class="cell size1" style="padding-left: 10px;">已保存结果</span>
+    <span class="cell size7"></span>
+    <span class="cell size4" style="text-align: right; padding-right: 10px;">
+        <button style="vertical-align: initial;" ng-click="onClickExportExcel($event)">导出Excel</button>
+        <button style="vertical-align: initial;" ng-click="onClickResultListDeleteItem($event)">删除</button>
+    </span>
+</div>
+
+<div class="row">
+    <table class="cell colspan12">
+        <thead>
+            <tr>
+                <th style="width: auto; text-align: center;">
+                    <label class="input-control checkbox">
+                        <input type="checkbox" ng-model="vm.isResultListSelectedAll" ng-change="onChangeResultListSelectedAll()" />
+                        <span class="check"></span>
+                        <span class="caption"></span>
+                    </label>
+                </th>
+                <th>期货合约</th>
+                <th>债券代码</th>
+                <th>期货价格</th>
+                <th>债券收益率(%)</th>
+                <th>T+1 收益率(%)</th>
+
+                <th>债券净价</th>
+                <th>转换因子</th>
+                <th>IRR(%)</th>
+                <th>基差</th>
+                <th>净基差</th>
+
+                <th>试算时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in resultList track by $index">
+                <td style="width: auto; text-align: center;">
+                    <label class="input-control checkbox">
+                        <input type="checkbox" ng-model="item.isSelected" />
+                        <span class="check"></span>
+                        <span class="caption"></span>
+                    </label>
+                </td>
+                <td ng-bind="item.selectedFuture.tfId"></td>
+                <td ng-bind="item.selectedBond.bondCode"></td>
+                <td ng-bind="item.selectedFuture.futurePrice"></td>
+                <td ng-bind="item.selectedBond.yield"></td>
+                <td ng-bind="item.selectedBond.yieldByDay"></td>
+
+                <td ng-bind="item.selectedBond.netPrice"></td>
+                <td ng-bind="item.selectedBond.convertionFactor"></td>
+                <td ng-bind="item.calculationResult.calculationMainResult.irr"></td>
+                <td ng-bind="item.calculationResult.calculationMainResult.basis"></td>
+                <td ng-bind="item.calculationResult.calculationMainResult.netBasis"></td>
+
+                <td ng-bind="item.addedDatetime.formatDate(DATETIME_FORMAT)"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

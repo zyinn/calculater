@@ -1,0 +1,95 @@
+﻿html {
+    height: 100%;
+    font-size: 12px;
+}
+
+body {
+    margin: 0;
+    font-size: 14px !important;
+}
+
+.row {
+    /*padding: 9px 3px;*/
+}
+
+    .row input {
+        height: 2rem;
+        vertical-align: middle;
+    }
+
+    .row > div,
+    .row > span {
+        line-height: 4rem;
+    }
+
+    .row.row-hh > div,
+    .row.row-hh > span {
+        line-height: 2rem;
+    }
+
+    .row div.custom-input-container {
+        display: inline-block;
+    }
+
+    .row > input {
+        height: 2rem;
+        margin-top: 1rem;
+    }
+
+    .row .toolbox {
+        margin: 0;
+        line-height: 4rem;
+    }
+
+        .row .toolbox > * {
+            height: 2rem;
+            line-height: initial;
+        }
+
+/*.row > span[class^="mif-"]:before,
+.row > span[class^="mif-"]:after {
+    content: "\00A0"
+}*/
+
+.row-spilt {
+    border-bottom: 1px solid #2A3434;
+    margin: 0 5px 9px 5px;
+    height: 10px !important;
+    padding: 0 !important;
+}
+
+[class^="mif-"]:before, [class*=" mif-"]:before {
+    /*margin-right: 5px;*/
+    font-weight: normal;
+}
+
+[class^="mif-"], [class*=" mif-"] {
+    font-family: inherit;
+}
+
+.tabControl {
+    margin: 10px 0 0 0;
+    height: 30px;
+}
+
+#tabViewContent {
+    padding: 0;
+}
+
+    #tabViewContent > div {
+        padding: 0;
+    }
+
+input.disabled {
+    background: gray;
+}
+
+.toolbox.disabled button {
+    background: gray;
+}
+
+
+/******************************************************************************************************/
+/* ui.datepicker */
+/******************************************************************************************************/
+

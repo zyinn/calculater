@@ -1,0 +1,24 @@
+﻿<div id="tfcalculator-bpla" ng-controller="basis_pndl_analysis.mainCtrl">
+
+    <!-- ReSharper disable Html.TagNotResolved -->
+    <!--<article class="tabControl">
+        <svg xmln="http://www.w3.org/2000/svg" version="1.1" width="150px" height="30px">
+            <defs xmln="http://www.w3.org/2000/svg">
+                <clipPath xmln="http://www.w3.org/2000/svg" id="cut-off-bottom">
+                    <polygon xmln="http://www.w3.org/2000/svg" points="0,30 20,0 130,0 150,30, 0,30" style="fill-rule: evenodd;"/>
+                </clipPath>
+            </defs>
+
+            <foreignObject xmln="http://www.w3.org/2000/svg" width="150px" height="30px" clip-path="url(#cut-off-bottom)">
+                <div class="element">
+                    <section class="tabItem">基差盈亏分析</section>
+                </div>
+            </foreignObject>
+        </svg>
+    </article>-->
+    <!-- ReSharper restore Html.TagNotResolved -->
+
+    <div id="bplaForm" class="col-md-4" ng-include="'basis_pndl_analysis/views/form.html'" ng-controller="basis_pndl_analysis.bplaFormCtrl" onload=""></div>
+
+    <div id="bplaChart" class="col-md-8" ng-include="'basis_pndl_analysis/views/chart.html'" ng-controller="basis_pndl_analysis.bplaChartCtrl" data-onload="chartDomLoaded()"></div>
+</div>

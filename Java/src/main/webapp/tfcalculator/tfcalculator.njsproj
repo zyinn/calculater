@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>tfcalculator</Name>
+    <RootNamespace>tfcalculator</RootNamespace>
+    <LaunchUrl>http://localhost:1337/src/index.html</LaunchUrl>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>c0328575-b947-4473-8a0e-2952a11c67fc</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>server.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <NodejsPort>1437</NodejsPort>
+    <StartWebBrowser>True</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="server.js" />
+    <Compile Include="SockJSNode.js" />
+    <Compile Include="src\app.js" />
+    <Compile Include="src\app\service\js\app\app.js" />
+    <Compile Include="src\app\service\js\app\authorization.service.js" />
+    <Compile Include="src\basis_pndl_analysis\bplaService.js" />
+    <Compile Include="src\basis_pndl_analysis\controllers\bplaChartCtrl.js" />
+    <Compile Include="src\basis_pndl_analysis\controllers\bplaFormCtrl.js" />
+    <Compile Include="src\basis_pndl_analysis\controllers\mainCtrl.js" />
+    <Compile Include="src\basis_pndl_analysis\main.js" />
+    <Compile Include="src\basis_pndl_analysis\mainModule.js" />
+    <Compile Include="src\common\controllers\confirmDialogCtrl.js" />
+    <Compile Include="src\common\controllers\tabViewCtrl.js" />
+    <Compile Include="src\common\directives\customSelect1Directive.js" />
+    <Compile Include="src\common\directives\inputNumberOnChangeDirective.js" />
+    <Compile Include="src\common\directives\numbericUpDownDirective.js" />
+    <Compile Include="src\common\directives\repoRateDirective.js" />
+    <Compile Include="src\common\directives\customSelect0Directive.js" />
+    <Compile Include="src\common\directives\currencyValueDirective.js" />
+    <Compile Include="src\common\directives\percentValueDirective.js" />
+    <Compile Include="src\common\directives\datePickerDirective.js" />
+    <Compile Include="src\common\directives\searchBoxDirective.js" />
+    <Compile Include="src\common\filters\datetimeToFiletime.js" />
+    <Compile Include="src\common\filters\filetimeToDatetime.js" />
+    <Compile Include="src\common\filters\currencyUnitFilter.js" />
+    <Compile Include="src\common\filters\percentFilter.js" />
+    <Compile Include="src\common\scripts\aes.js" />
+    <Compile Include="src\common\scripts\ArrayUtils.js" />
+    <Compile Include="src\common\scripts\DateUtils.js" />
+    <Compile Include="src\common\scripts\echarts.js" />
+    <Compile Include="src\common\scripts\FileSaver.js" />
+    <Compile Include="src\common\scripts\NumberUtils.js" />
+    <Compile Include="src\common\scripts\spin.js" />
+    <Compile Include="src\common\scripts\ObjectUtils.js" />
+    <Compile Include="src\common\scripts\StringUtils.js" />
+    <Compile Include="src\common\scripts\widgets\hits.js" />
+    <Compile Include="src\common\services\commonService.js" />
+    <Compile Include="src\common\services\delayEventService.js" />
+    <Compile Include="src\common\services\directiveUtilService.js" />
+    <Compile Include="src\common\services\httpService.js" />
+    <Compile Include="src\config.js" />
+    <Compile Include="src\gulpfile.js" />
+    <Compile Include="src\main.js" />
+    <Compile Include="src\tf_calculator\tcService.js" />
+    <Compile Include="src\tf_calculator\controllers\resultListCtrl.js" />
+    <Compile Include="src\tf_calculator\controllers\tabViewCtrl.js" />
+    <Compile Include="src\tf_calculator\controllers\headerCtrl.js" />
+    <Compile Include="src\tf_calculator\controllers\mainCtrl.js" />
+    <Compile Include="src\tf_calculator\main.js" />
+    <Compile Include="src\tf_calculator\mainModule.js" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="src\basis_pndl_analysis\main.html" />
+    <Content Include="src\basis_pndl_analysis\main.min.htmlx" />
+    <Content Include="src\common\directives\customSelect1Template.html" />
+    <Content Include="src\common\directives\numbericUpDownTemplate.html" />
+    <Content Include="src\common\directives\repoRateTemplate.html" />
+    <Content Include="src\common\directives\searchBoxTemplate.html" />
+    <Content Include="src\index.min.html" />
+    <Content Include="src\tf_calculator\main.min.htmlx" />
+    <Content Include="src\tf_calculator\main.html" />
+    <Content Include="src\basis_pndl_analysis\styles\color.css" />
+    <Content Include="src\basis_pndl_analysis\styles\layout.css" />
+    <Content Include="src\basis_pndl_analysis\views\chart.html" />
+    <Content Include="src\basis_pndl_analysis\views\form.html" />
+    <Content Include="src\common\directives\customSelect0Template.html" />
+    <Content Include="src\common\styles\common-color.css" />
+    <Content Include="src\common\styles\common-element.css" />
+    <Content Include="src\common\styles\common-layout.css" />
+    <Content Include="src\common\styles\dialog.css" />
+    <Content Include="src\common\views\tabView.html" />
+    <Content Include="src\common\templates\confirm_dialog.html" />
+    <Content Include="src\html1.html" />
+    <Content Include="src\index.html" />
+    <Content Include="src\tf_calculator\styles\color.css" />
+    <Content Include="src\tf_calculator\styles\layout.css" />
+    <Content Include="src\tf_calculator\views\header.html" />
+    <Content Include="src\tf_calculator\views\resultList.html" />
+    <Content Include="src\tf_calculator\views\tabView.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="mock\" />
+    <Folder Include="src\" />
+    <Folder Include="src\basis_pndl_analysis\controllers\" />
+    <Folder Include="src\basis_pndl_analysis\styles\" />
+    <Folder Include="src\basis_pndl_analysis\views\" />
+    <Folder Include="src\client\" />
+    <Folder Include="src\app\" />
+    <Folder Include="src\app\service\" />
+    <Folder Include="src\app\service\js\" />
+    <Folder Include="src\app\service\js\app\" />
+    <Folder Include="src\basis_pndl_analysis\" />
+    <Folder Include="src\common\" />
+    <Folder Include="src\common\controllers\" />
+    <Folder Include="src\common\directives\" />
+    <Folder Include="src\common\filters\" />
+    <Folder Include="src\common\scripts\widgets\" />
+    <Folder Include="src\common\views\" />
+    <Folder Include="src\common\styles\" />
+    <Folder Include="src\common\services\" />
+    <Folder Include="src\common\scripts\" />
+    <Folder Include="src\common\templates\" />
+    <Folder Include="src\tf_calculator\" />
+    <Folder Include="src\tf_calculator\controllers\" />
+    <Folder Include="src\tf_calculator\styles\" />
+    <Folder Include="src\tf_calculator\views\" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

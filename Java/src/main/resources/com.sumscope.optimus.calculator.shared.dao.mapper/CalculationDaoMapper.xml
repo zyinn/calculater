@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sumscope.optimus.calculator.shared.dao.mapper.CalculationDaoMapper">
+   <resultMap id="QueryFutureContract" type="com.sumscope.optimus.calculator.shared.model.dbmodel.FutureContract">
+       <result column="TF_Key" property="tfKey" jdbcType="VARCHAR" />
+       <result column="TF_ID" property="tfId" jdbcType="VARCHAR"/>
+       <result column="Delivery_Date" property="deliveryDate" jdbcType="DECIMAL" />
+       <result column="Bond_Term" property="bondTerm" jdbcType="INTEGER" />
+   </resultMap>
+   
+   
+    <select id="retrieveFutureContracts" resultType="com.sumscope.optimus.calculator.shared.model.dbmodel.FutureContract">
+        SELECT TF_Key AS tfKey,TF_ID AS tfId, date_format(delivery_date,'%Y-%m-%d') AS deliveryDate,
+        date_format(Last_Trading_Day,'%Y-%m-%d') AS tradingDate,bond_term AS bondTerm
+        FROM TF_Fundamental
+        WHERE  date_format(Last_Trading_Day,'%Y-%m-%d') >= now()
+        order by TF_ID ASC ;
+    </select>
+
+    <!--根据发行市场和用户传入的日期来获取对应下一个工作日-->
+    <select id = "getNextBusinessDay" resultType="java.util.HashMap" parameterType="String">
+        select next_bday from next_business_day where lookup_date = #{date} AND market_type = 'CIB';
+    </select>
+
+    <select id = "getLastWorkDay" resultType="String" parameterType="String">
+        select last_bday from next_business_day where lookup_date = #{date} AND market_type = 'CFFEX';
+    </select>
+
+    <select id="getDeliverableBondsKey" resultType="com.sumscope.optimus.calculator.shared.model.dbmodel.DeliverableBondKeyInfo">
+        select Bond_Key as bondKey,conversion_factor as convertionFactor from TF_Conversion_Factor factor where  factor.TF_Key = '${tfKey}'
+    </select>
+
+    <select id="getBondInfoByKeys" resultType="com.sumscope.optimus.calculator.shared.model.dbmodel.BondInfo">
+        SELECT bond.Bond_Key AS bondKey, 'CIB' AS listedMarket, CONCAT(`bond`.`Bond_ID`, ".IB") AS bondCode,
+        date_format(bond.Interest_Start_Date,'%Y-%m-%d') AS interestStartDate, date_format(bond.maturity_date,'%Y-%m-%d') AS maturityDate,
+        bond.Issue_Rate AS fixedCoupon,
+        bond.Coupon_Frequency AS paymentFrequency,bond.Interest_Basis AS dayCount,
+        bond.Short_Name AS shortName
+        from bond bond
+        where
+        <if test="bondKeyList != null">
+            bond.Bond_Key in ( '${bondKeyList}') AND
+        </if>
+        bond.delflag = '0' and bond.is_cib = 'Y' ORDER BY bond.Bond_ID DESC ;
+    </select>
+
+    <select id="getBondCdcLatestPrice" resultType="com.sumscope.optimus.calculator.shared.model.dbmodel.BondCDCValuationInfo">
+        select val_yield AS yield,Val_Modified_Duration as modifiedDuration
+        from cdc_bond_valuation
+        where bond_key = '${bondKey}'
+        AND Listed_Market = 'CIB'
+        order by Valuate_Date desc limit 1;
+    </select>
+
+    <!--  获取当天最新Broker报的最优双边的Ofr(卖价收益率) -->
+    <select id="getBondOfrLatestPriceToday" resultType="java.util.HashMap">
+        SELECT Offer_YTM AS yield
+        FROM bond_best_bid_offer_v2_today
+        <include refid="bondOfrLatestPriceWhere"></include>
+    </select>
+
+    <!--  获取历史最新Broker报的最优双边的Ofr(卖价收益率) -->
+    <select id="getBondOfrLatestPriceHistory" resultType="java.util.HashMap">
+        SELECT Offer_YTM AS yield
+        FROM bond_best_bid_offer_v2_history
+        <include refid="bondOfrLatestPriceWhere"></include>
+    </select>
+    <sql id="bondOfrLatestPriceWhere">
+        WHERE 1=1
+        AND BrokerId !=''
+        AND Offer_PriceStr IS NOT NULL
+        AND ListedMarket = 'CIB'
+        AND BondKey = '${bondKey}'
+        ORDER BY CreatedAt DESC limit 1;
+    </sql>
+
+    <!--取所有Broker报的当天最新最优双边的Bid收益率的最小值-->
+    <select id="getBondBidLatestPriceToday" resultType="java.util.HashMap">
+        SELECT Bid_YTM AS yield
+        FROM bond_best_bid_offer_v2_today
+        <include refid="bondBidLatestPriceWhere"></include>
+    </select>
+    <!--取所有Broker报的历史最新最优双边的Bid收益率的最小值-->
+    <select id="getBondBidLatestPriceHistory" resultType="java.util.HashMap">
+        SELECT Bid_YTM AS yield
+        FROM bond_best_bid_offer_v2_history
+        <include refid="bondBidLatestPriceWhere"></include>
+    </select>
+    <sql id="bondBidLatestPriceWhere">
+        WHERE 1=1
+        AND BrokerId !=''
+        AND Bid_PriceStr IS NOT NULL
+        AND ListedMarket = 'CIB'
+        AND BondKey = '${bondKey}'
+        ORDER BY CreatedAt DESC limit 1;
+    </sql>
+
+    <!-- 取所有broker中报的当天最新成交收益率的最大值-->
+    <select id="getBondDealLatestPriceToday" resultType="java.util.HashMap">
+        SELECT YTM as yield FROM bond_trade_v2_today
+        <include refid="bondDealLatestPriceWhere"></include>
+    </select>
+    <!-- 取所有broker中报的历史最新成交收益率的最大值-->
+    <select id="getBondDealLatestPriceHistory" resultType="java.util.HashMap">
+        SELECT YTM as yield FROM bond_trade_v2_today_history
+        <include refid="bondDealLatestPriceWhere"></include>
+    </select>
+    <sql id="bondDealLatestPriceWhere">
+        WHERE 1=1
+        AND ListedMarket = 'CIB'
+        AND Status != '2'
+        AND Internally != '2'
+        AND DealStatus != 3
+        AND BrokerId is not null
+        AND BondKey = '${bondKey}'
+        ORDER BY CreatedAt DESC limit 1;
+    </sql>
+
+    <select id="findBondsByNamePrefix"
+            resultType="com.sumscope.optimus.calculator.shared.model.dto.BondPrimaryKeyDto">
+        SELECT 'CIB' AS listedMarket, bond.Bond_Key AS bondKey, CONCAT(`bond`.`Bond_ID`, ".IB") AS `bondCode`,
+        bond.Short_Name AS shortName, date_format(bond.Interest_Start_Date,'%Y-%m-%d') AS interestStartDate,
+        date_format(bond.maturity_date,'%Y-%m-%d') AS maturityDate, bond.Issue_Rate AS fixedCoupon, bond.Coupon_Frequency AS paymentFrequency
+        FROM bond bond
+        WHERE bond.delflag = '0'
+        AND bond.bond_id like '${codePrefix}%'
+        AND bond.Coupon_Type = 'FRB' AND bond.is_cib = 'Y' AND bond.maturity_date > date_format(now(),'%Y%m%d')
+        ORDER BY bond.Bond_Key;
+    </select>
+
+
+    <!-- 根据用户选择的对应的期货年限,来获取对应年限的未发国债,
+     只要新发债,并且发行日要大于当前时间.
+     5 - (5年期未发国债)   >5  (7-10年期未发国债)
+     起息日,和到期日不做查询,在service层做相应的处理.
+     -->
+    <select id="getScheduledBondByTerm" resultType="com.sumscope.optimus.calculator.shared.model.dbmodel.ScheduledBondInfo" parameterType="int">
+    SELECT
+        ts.ID AS id,
+        date_format(ts.Auction_Date,'%Y-%m-%d') AS issueStartDate,
+        ts.Coupon_Type AS couponType,
+        ts.Term_Y AS deadLine
+        FROM treasury_schedule ts
+        WHERE
+         <if test="_parameter > 5">
+             (ts.Term_Y = '7' OR ts.Term_Y=#{term,jdbcType=DECIMAL}) AND
+         </if>
+         <if test="_parameter==5">
+             ts.Term_Y=#{term,jdbcType=DECIMAL} AND
+         </if>
+          ts.New_Add='New'
+          AND date_format(ts.Auction_Date,'%Y-%m-%d')> NOW() ORDER BY ts.Term_Y DESC ;
+    </select>
+
+    <!-- 根据用户所选择的未发国债的年限来获取市场上对应年限的已发国债最新发行的债券的key值
+     'BGB', 'SGB', 'EGB' : 国债类型
+     Issue_Start_Date : 发行 日
+     -->
+    <select id="getBondKeyByTerm" resultType="String" parameterType="Integer">
+        SELECT
+        bond_key
+        FROM bond
+        WHERE
+        Term_Unit = 'Y'
+        AND Maturity_Term_Y = #{deadLine}
+        AND Bond_Subtype IN ('BGB', 'SGB', 'EGB')
+        AND BOND_ID IS NOT NULL
+        AND NOW()>date_format(Issue_Start_Date,'%Y-%m-%d')
+        AND Issue_End_Date is not null
+        ORDER BY Issue_Start_Date DESC LIMIT 1
+    </select>
+
+    <!-- 根据未发国债的id,查询未发国债表的具体详细 -->
+    <select id="getScheduledBondById" resultType="com.sumscope.optimus.calculator.shared.model.dbmodel.ScheduledBondInfo">
+        SELECT date_format(ts.Auction_Date,'%Y-%m-%d') AS issueStartDate,
+        ts.Coupon_Type AS couponType,
+        ts.Term_Y AS deadLine
+        FROM treasury_schedule ts WHERE ts.id= #{id}
+    </select>
+</mapper>

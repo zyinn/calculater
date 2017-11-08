@@ -1,0 +1,342 @@
+
+
+#tfcalculator-bpla #bplaForm {
+    background: #171919;
+}
+
+#tfcalculator-bpla span.bplaForm-label {
+    color: #FFEBC8;
+}
+
+#tfcalculator-bpla .bplaForm-value,
+#tfcalculator-bpla #bplaChart .detail .popup table td {
+    color: #F9BD6E;
+}
+
+#tfcalculator-bpla #bondCodeDropdown ul {
+    background: #6B6E4A;
+}
+
+
+    #tfcalculator-bpla #bondCodeDropdown ul li {
+        color: black;
+    }
+
+        #tfcalculator-bpla #bondCodeDropdown ul li.active,
+        #tfcalculator-bpla #bondCodeDropdown ul li:focus,
+        #tfcalculator-bpla #bondCodeDropdown ul li:hover {
+            background: #0F898A;
+        }
+
+#tfcalculator-bpla #bplaChart {
+    background: #101111;
+}
+
+    #tfcalculator-bpla #bplaChart .chart-header {
+        background: #062E2E;
+    }
+
+    #tfcalculator-bpla #bplaChart .detail .popup,
+    #tfcalculator-bpla #bplaChart .detail .popup button.popup-close-btn {
+        background: #063a3b;
+    }
+
+    #tfcalculator-bpla #bplaChart .toolbox-hedgeMap button.active {
+        background: #0F898A;
+    }
+
+    #tfcalculator-bpla #bplaChart .toolbox-hedgeMap button,
+    #tfcalculator-bpla #bplaChart .toolbox-hedgeMap button:active,
+    #tfcalculator-bpla #bplaChart .detail .popup table tr > td:first-child {
+        color: white;
+    }
+html {
+    height: 90%;
+}
+
+
+#tfcalculator-bpla #bplaForm {
+    border-right: 3px solid black;
+}
+
+body,
+#tfcalculator-bpla #bplaForm,
+#tfcalculator-bpla #bplaChart,
+#wrapper, .container-fluid {
+    height: 100%;
+}
+
+#tfcalculator-bpla .row > span:last-child {
+    width: auto;
+}
+
+#tfcalculator-bpla .row div.bplaForm-label,
+#tfcalculator-bpla .row span.bplaForm-label {
+    text-align: right;
+    padding-right: 0;
+    white-space: nowrap;
+}
+
+#tfcalculator-bpla .row div.bplaForm-label {
+    -moz-min-width: 84px;
+    -ms-min-width: 84px;
+    -o-min-width: 84px;
+    -webkit-min-width: 84px;
+    min-width: 84px;
+}
+
+#tfcalculator-bpla .row span.bplaForm-label:before {
+    margin-right: 5px;
+}
+
+#tfcalculator-bpla .row span.bplaForm-label:after {
+    content: "\003a";
+    margin: 0 3px;
+}
+
+#tfcalculator-bpla .row > input[type=text],
+#tfcalculator-bpla .row > input[type=search] {
+    width: 10rem;
+    margin-right: 2rem;
+}
+
+#tfcalculator-bpla .row > input[type=date] {
+    width: 12rem;
+}
+
+#tfcalculator-bpla .row > input[type=number] {
+    width: 5rem;
+}
+
+
+#tfcalculator-bpla #bplaForm .row .toolbox {
+    line-height: 2rem;
+}
+
+#tfcalculator-bpla .row .toolbox-hedgeMap {
+    margin: 0;
+    line-height: 4rem;
+}
+
+#tfcalculator-bpla #bplaChart .row .toolbox-hedgeMap > * {
+    height: 2.5rem;
+    line-height: initial;
+    margin-right: 6px;
+}
+
+#tfcalculator-bpla .row > select {
+    padding: 3px;
+}
+
+#tfcalculator-bpla .row > span,
+#tfcalculator-bpla .row > div {
+    text-align: left;
+    padding: 0;
+}
+
+
+#tfcalculator-bpla select {
+    width: 12rem;
+}
+
+#tfcalculator-bpla .hasDatepicker {
+    width: 12rem;
+}
+
+#tfcalculator-bpla #bondCodeDropdown ul {
+    padding: 0;
+    border: none;
+    margin-top: -1rem;
+    max-height: 600%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+    #tfcalculator-bpla #bondCodeDropdown ul li {
+        padding: 0 5px;
+        height: 2rem;
+        line-height: 2rem;
+        white-space: nowrap;
+    }
+
+        #tfcalculator-bpla #bondCodeDropdown ul li > span {
+            padding-right: 15px;
+        }
+
+/*#tfcalculator-bpla #bplaChart .chart-header {
+    height: 4rem;
+}*/
+
+#tfcalculator-bpla #bplaChart {
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+    #tfcalculator-bpla #bplaChart .row {
+        /*padding: 6px;*/
+        margin: 0;
+    }
+
+    #tfcalculator-bpla #bplaChart .chart-header:first-child {
+        /*padding: 16px 16px 6px 16px;*/
+    }
+
+    #tfcalculator-bpla #bplaChart .chart-header:nth-child(2) {
+        /*padding: 6px 16px 16px 16px;*/
+    }
+
+    #tfcalculator-bpla #bplaChart .chart-header > div {
+        padding-left: 15px;
+    }
+
+        #tfcalculator-bpla #bplaChart .chart-header > div:last-child {
+            padding-right: 15px;
+        }
+
+    #tfcalculator-bpla #bplaChart .input-bondNominalPrincipal {
+        width: 14rem;
+    }
+
+    #tfcalculator-bpla #bplaChart .chart1,
+    #tfcalculator-bpla #bplaChart .chart2 {
+        height: 43%;
+        padding: 0;
+        /*margin: 0 -60px 0 -75px;*/
+        margin: 1% 0 0 0;
+    }
+
+    #tfcalculator-bpla #bplaChart .detail {
+        height: 43%;
+        padding: 5% 20%;
+    }
+
+        #tfcalculator-bpla #bplaChart .detail.chart-detail-postition-top {
+            margin-top: -60%;
+        }
+
+        #tfcalculator-bpla #bplaChart .detail.chart-detail-postition-bottom {
+            margin-top: -30%;
+        }
+
+
+    #tfcalculator-bpla #bplaChart .chart1 > div,
+    #tfcalculator-bpla #bplaChart .chart2 > div {
+        margin: 0;
+    }
+
+    #tfcalculator-bpla #bplaChart .toolbox button {
+        padding: 3px 15px;
+    }
+
+    #tfcalculator-bpla #bplaChart .chart-tooltip-point {
+        height: 1rem;
+        width: 1rem;
+        -ms-border-radius: 100%;
+        border-radius: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    #tfcalculator-bpla #bplaChart .detail .popup {
+        padding: 10px;
+        position: relative;
+    }
+
+        #tfcalculator-bpla #bplaChart .detail .popup .popup-close-btn {
+            float: right;
+            line-height: 2rem;
+            margin: -1.5rem -1.5rem 0 0;
+        }
+
+        #tfcalculator-bpla #bplaChart .detail .popup .row {
+            margin: 0;
+            padding: 0 15px;
+        }
+
+            #tfcalculator-bpla #bplaChart .detail .popup .row > * {
+                line-height: 2rem;
+            }
+
+        #tfcalculator-bpla #bplaChart .detail .popup table {
+            width: 100%;
+            text-align: right;
+        }
+
+            /*#tfcalculator-bpla #bplaChart .detail .popup table .span-editable {
+                -moz-min-width: 2rem;
+                -ms-min-width: 2rem;
+                -o-min-width: 2rem;
+                -webkit-min-width: 2rem;
+                min-width: 2rem;
+            }*/
+
+            #tfcalculator-bpla #bplaChart .detail .popup table tr {
+                height: 3rem;
+            }
+
+            #tfcalculator-bpla #bplaChart .detail .popup table > thead > tr > th {
+                text-align: right;
+            }
+
+                #tfcalculator-bpla #bplaChart .detail .popup table > thead > tr > th.hasSymbol {
+                    padding-right: 1.5rem;
+                }
+
+            #tfcalculator-bpla #bplaChart .detail .popup table tr > td:first-child {
+                width: 3rem;
+            }
+
+            #tfcalculator-bpla #bplaChart .detail .popup table tr > td {
+                margin: 0 3px;
+            }
+
+    #tfcalculator-bpla #bplaChart #detail.ng-hide {
+        -webkit-transition: 0.3s linear all;
+        -moz-transition: 0.3s linear all;
+        -ms-transition: 0.3s linear all;
+        -o-transition: 0.3s linear all;
+        transition: 0.3s linear all;
+        -ms-opacity: 0;
+        opacity: 0;
+    }
+
+    #tfcalculator-bpla #bplaChart #detail.show {
+        -webkit-transition: 0.3s linear all;
+        -moz-transition: 0.3s linear all;
+        -ms-transition: 0.3s linear all;
+        -o-transition: 0.3s linear all;
+        transition: 0.3s linear all;
+        -ms-opacity: 1;
+        opacity: 1;
+    }
+
+@media screen and (max-width: 1366px) {
+    #tfcalculator-bpla #bplaForm .row > div,
+    #tfcalculator-bpla #bplaForm .row > span {
+        line-height: 3.5rem;
+    }
+
+    #tfcalculator-bpla #bplaForm .row-size-s > div,
+    #tfcalculator-bpla #bplaForm .row-size-s > span {
+        line-height: 3rem;
+    }
+
+    #tfcalculator-bpla #bplaChart .input-bondNominalPrincipal {
+        width: 12rem;
+    }
+
+    #tfcalculator-bpla #bplaChart .detail {
+        height: 50%;
+        padding: 0 15%;
+    }
+
+    /*#tfcalculator-bpla .row .bplaForm-label {
+        -moz-min-width: 84px;
+        -ms-min-width: 84px;
+        -o-min-width: 84px;
+        -webkit-min-width: 84px;
+        min-width: 84px;
+    }*/
+}

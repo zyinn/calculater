@@ -1,0 +1,75 @@
+<div class="row flex-just-sb tc-header">
+    <span class="cell size1 form-label">计算目标</span>
+    <div class="cell size7 toolbox form-value" ng-click="onActiveButton(undefined, 'vm.selectedCalTgtType', true)">
+        <button ng-disabled="isViewBusy" ng-repeat="item in calTgtTypeButtons" ng-bind="item.display" value="{{item.value}}" ng-class="{active: vm.selectedCalTgtType.value === '{{item.value}}'}"></button>
+    </div>
+
+    <div class="cell size4" style="text-align: right;">
+        <button ng-disabled="isViewBusy" ng-click="resetViewModel($event)">恢复默认</button>
+    </div>
+</div>
+
+<div class="row cell-auto-size tc-header">
+    <span class="cell size1 form-label">期货合约</span>
+
+    <div class="cell custom-input-container">
+        <select custom-select0-directive style="width: 120px; line-height: 2rem;" renderWidth="120" renderHeight="24" ng-change="onChangeFuture()"
+                ng-disabled="isViewBusy" ng-model="vm.selectedFuture" ng-options="item.tfId for item in futures"></select>
+    </div>
+
+    <span class="cell form-label">交易日</span>
+    <div class="cell form-value custom-input-container">
+        <input date-picker-directive ng-disabled="isViewBusy" date-format="{{DATE_FORMAT}}"
+               ng-model="vm.selectedFuture.startDate" ng-change="onChangePropperty('vm.selectedFuture.startDate')" />
+    </div>
+
+    <span class="cell form-label">
+        <span class="mif-info" data-role="hint" data-hint="第二交割日，即合约到期月份第二个周五后的第二个交易日。" data-hint-position="bottom"></span>
+        <span>交割日</span>
+    </span>
+
+    <div class="cell form-value custom-input-container">
+        <input date-picker-directive ng-disabled="isViewBusy" date-format="{{DATE_FORMAT}}"
+               ng-model="vm.selectedFuture.maturityDate" ng-change="onChangePropperty('vm.selectedFuture.maturityDate')" />
+    </div>
+
+    <span class="cell form-label">剩余天数</span>
+    <span class="cell form-value" ng-bind="getDateDiff(vm.selectedFuture.startDate, vm.selectedFuture.maturityDate, 'day')"></span>
+
+    <span class="cell form-label form-label-nosign" style="white-space: pre;">资金成本 = </span>
+    <input type="text" class="cell form-value repo-rate-directive" repo-rate-list="repoRates" pattern="^(\d{0,4})$|^(\d{0,4}.\d{0,4})$" max="100" min="0"
+           default-code="FR007" ng-model="vm.capitalCost" ng-change="onChangePropperty('vm.capitalCost')" />
+</div>
+
+<div class="row" ng-show="vm.selectedCalTgtType.value === calTgtTypeButtons[0].value || vm.selectedCalTgtType.value === calTgtTypeButtons[1].value">
+    <span class="cell size1 form-label">期货价格</span>
+    <div class="cell size3 form-value">
+        <input type="number" style="width: 10rem;" ng-disabled="isViewBusy" ng-model="vm.selectedFuture.futurePrice"
+               ng-keydown="onKeydownChangedProperty($event, 'vm.selectedFuture.futurePrice')" />
+        <span class="mif-loop2 mif-loop2-hover form-value-white" style="width: auto;" ng-click="onClickRefreshFuturePrice($event)"></span>
+
+        <span class="form-label">最后更新</span>
+        <span class="form-value-white" ng-class="{'text-color-red': isWarnDatetime(vm.selectedFuture.lastUpdateDatetime)}"
+              ng-bind="(vm.selectedFuture.lastUpdateDatetime | filetimeToDatetime).formatDate(DATETIME_FORMAT)"></span>
+
+        <!--<span class="form-value-white" ng-class="{'text-color-red': isWarnDatetime(vm.selectedFuture.lastUpdateDatetime)}"
+              ng-bind="(vm.selectedFuture.lastUpdateDatetime | filetimeToDatetime)"></span>-->
+    </div>
+</div>
+
+<div class="row" ng-show="vm.selectedCalTgtType.value === calTgtTypeButtons[1].value || vm.selectedCalTgtType.value === calTgtTypeButtons[2].value">
+    <span class="cell size1 form-label">IRR</span>
+    <div class="cell size5 form-value">
+        <input type="number" ng-disabled="isViewBusy" ng-model="vm.calculationResult.calculationMainResult.irr"
+               ng-keydown="onKeydownChangedProperty($event, 'vm.calculationResult.calculationMainResult.irr')" />
+        <span style="width: Auto;">%</span>
+
+        <span class="form-label">基差</span>
+        <input type="number" ng-disabled="isViewBusy" ng-model="vm.calculationResult.calculationMainResult.basis"
+               ng-keydown="onKeydownChangedProperty($event, 'vm.calculationResult.calculationMainResult.basis')" />
+
+        <span class="form-label">净基差</span>
+        <input type="number" ng-disabled="isViewBusy" ng-model="vm.calculationResult.calculationMainResult.netBasis"
+               ng-keydown="onKeydownChangedProperty($event, 'vm.calculationResult.calculationMainResult.netBasis')" />
+    </div>
+</div>

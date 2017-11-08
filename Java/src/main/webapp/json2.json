@@ -1,0 +1,60 @@
+{
+    "result": [
+        {
+            "calculationMainResult": null,
+            "interestRateSpread": null,
+            "futureSpotSpread": 1.2399999999999999911182158029987476766109466552734375,
+            "carry": 1.2399999999999999911182158029987476766109466552734375,
+            "receiptPrice": 1.2399999999999999911182158029987476766109466552734375,
+            "interestOnSettlementDate": 1.2399999999999999911182158029987476766109466552734375,
+            "interestOnTradingDate": 1.2399999999999999911182158029987476766109466552734375,
+            "interestDuringHolding": 1.2399999999999999911182158029987476766109466552734375,
+            "weightedAverageInterest": 1.2399999999999999911182158029987476766109466552734375,
+            "futruePrice": {
+                "futurePrice": 1.2399999999999999911182158029987476766109466552734375,
+                "lastUpdateDatetime": 1472692720106
+            },
+            "selectableBonds": [
+                {
+                    "bondKey": "111111111",
+                    "listedMarket": "test",
+                    "bondCode": "333333",
+                    "shortName": "test",
+                    "tradeDate": 1472692720106,
+                    "settlementDate": 1472692720106,
+                    "fixedCoupon": 1.2399999999999999911182158029987476766109466552734375,
+                    "paymentFrequency": "A"
+                }
+            ],
+            "defaultBondPrice": {
+                "yield": 1.2199999999999999733546474089962430298328399658203125,
+                "netPrice": 1.2399999999999999911182158029987476766109466552734375,
+                "fullPrice": 1.229999999999999982236431605997495353221893310546875,
+                "yieldType": "ofr",
+                "lastBondUpdateDate": 1472692720106
+            },
+            "bondConvertionFactors": [
+                {
+                    "bondKey": "1111111",
+                    "convertionFactor": 1.2399999999999999911182158029987476766109466552734375
+                }
+            ],
+            "scheduledBondInfos": [
+                {
+                    "issueStartDate": "2016-10-19",
+                    "interestStartDate": null,
+                    "maturityDate": "2016-01-05 09:18:42.0",
+                    "couponType": "A",
+                    "shortName": "5Y¹úÕ®",
+                    "couponRate": null,
+                    "yield": null,
+                    "deadLine": 5,
+                    "yieldType": null
+                }
+            ]
+        }
+    ],
+    "return_message": "Success",
+    "return_code": 0,
+    "result_count": 1
+}

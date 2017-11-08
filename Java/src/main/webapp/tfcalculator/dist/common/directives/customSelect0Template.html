@@ -1,0 +1,25 @@
+<svg xmln="http://www.w3.org/2000/svg" version="1.1" width="150px" height="24px" class="col-md-4 ">
+    <defs>
+        <clipPath id="cut-off-bottom">
+            <polygon points="0,0 100,0 100,24 0,24" style="fill-rule: evenodd;"></polygon>
+        </clipPath>
+    </defs>
+
+    <foreignObject clip-path="url(#cut-off-bottom)" height="24px" width="144px">
+        <div style="display: inline-flex;" class="ng-pristine ng-untouched ng-valid">
+            <button class="customSelect0_expend" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; height: 24px; width: 24px; padding: 0px;">
+                <svg version="1.1" style="height: 24px; width: 24px;">
+                    <polygon version="1.1" points="8.399999999999999,8.399999999999999 12,15.600000000000001 15.600000000000001,8.399999999999999" style="fill-rule: evenodd; fill: rgb(0, 0, 0);"></polygon>
+                </svg>
+            </button>
+            <select custom-select0-directive="AAA" class="ng-empty ng-touched" ng-model="protocol" ng-options="item.name for item in itemArray" style="">
+                <option style="max-width: 150px;" value="" class="" selected="selected">-- 请选择协议号 --</option>
+                <option label="first" value="object:15">first</option>
+                <option label="second" value="object:16">second</option>
+                <option label="third" value="object:17">third</option>
+                <option label="fourth" value="object:18">fourth</option>
+                <option label="fifth" value="object:19">fifth</option>
+            </select>
+        </div>
+    </foreignObject>
+</svg>

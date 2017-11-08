@@ -1,0 +1,8 @@
+<!-- ReSharper disable Html.PathError -->
+<link href="basis_pndl_analysis/style/bplaStyle.css" rel="stylesheet" />
+<!-- ReSharper restore Html.PathError -->
+
+<div id="tfcalculator-bpla" ng-controller="basis_pndl_analysis.mainCtrl">
+    <div id="bplaForm" class="col-md-4" ng-include="'basis_pndl_analysis/views/form.html'" ng-controller="basis_pndl_analysis.bplaFormCtrl" onload=""></div>
+    <div id="bplaChart" class="col-md-8" ng-include="'basis_pndl_analysis/views/chart.html'" ng-controller="basis_pndl_analysis.bplaChartCtrl" data-onload="chartDomLoaded()"></div>
+</div>

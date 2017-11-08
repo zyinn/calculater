@@ -1,0 +1,52 @@
+﻿
+
+#tfcalculator-bpla #bplaForm {
+    background: #171919;
+}
+
+#tfcalculator-bpla span.bplaForm-label {
+    color: #FFEBC8;
+}
+
+#tfcalculator-bpla .bplaForm-value,
+#tfcalculator-bpla #bplaChart .detail .popup table td {
+    color: #F9BD6E;
+}
+
+#tfcalculator-bpla #bondCodeDropdown ul {
+    background: #6B6E4A;
+}
+
+
+    #tfcalculator-bpla #bondCodeDropdown ul li {
+        color: black;
+    }
+
+        #tfcalculator-bpla #bondCodeDropdown ul li.active,
+        #tfcalculator-bpla #bondCodeDropdown ul li:focus,
+        #tfcalculator-bpla #bondCodeDropdown ul li:hover {
+            background: #0F898A;
+        }
+
+#tfcalculator-bpla #bplaChart {
+    background: #101111;
+}
+
+    #tfcalculator-bpla #bplaChart .chart-header {
+        background: #062E2E;
+    }
+
+    #tfcalculator-bpla #bplaChart .detail .popup,
+    #tfcalculator-bpla #bplaChart .detail .popup button.popup-close-btn {
+        background: #063a3b;
+    }
+
+    #tfcalculator-bpla #bplaChart .toolbox-hedgeMap button.active {
+        background: #0F898A;
+    }
+
+    #tfcalculator-bpla #bplaChart .toolbox-hedgeMap button,
+    #tfcalculator-bpla #bplaChart .toolbox-hedgeMap button:active,
+    #tfcalculator-bpla #bplaChart .detail .popup table tr > td:first-child {
+        color: white;
+    }
